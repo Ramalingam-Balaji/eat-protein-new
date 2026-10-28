@@ -406,12 +406,12 @@ const goTo = (target) => {
   target="_blank"
   rel="noopener noreferrer"
   aria-label="Download EatProtein on the App Store"
-  className="rounded-[10px] bg-white p-[5px_10px] transition duration-200 hover:-translate-y-1"
+  className="rounded-[8px] bg-white p-[4px_8px] transition duration-200 hover:-translate-y-1"
 >
   <img
     src={appStore}
     alt="Download on the App Store"
-    className="h-12 w-auto object-contain"
+    className="h-10 w-auto object-contain"
   />
 </a>
 
@@ -421,12 +421,12 @@ const goTo = (target) => {
   target="_blank"
   rel="noopener noreferrer"
   aria-label="Get EatProtein on Google Play"
-  className="rounded-[10px] bg-white p-[5px_10px] transition duration-200 hover:-translate-y-1"
+  className="rounded-[8px] bg-white p-[4px_8px] transition duration-200 hover:-translate-y-1"
 >
   <img
     src={googlePlay}
     alt="Get it on Google Play"
-    className="h-12 w-auto object-contain"
+    className="h-10 w-auto object-contain"
   />
 </a>
              </div>
