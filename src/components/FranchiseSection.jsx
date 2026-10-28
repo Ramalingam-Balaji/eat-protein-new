@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { FRANCHISE_FEATURES } from "../data/homeData";
 import SectionTag from "./SectionTag";
+import AnimatedHeading from "./AnimatedHeading";
 
 const icons = {
   map: MapPin,
@@ -29,11 +30,18 @@ export default function FranchiseSection() {
         <div>
           <SectionTag orange>Business Opportunity</SectionTag>
 
-          <h2 className="mt-3 text-[28px] font-black leading-tight text-protein-dark">
-            EatProtein
-            <br />
-            <span className="text-protein-green">Franchise Opportunity</span>
-          </h2>
+    <h2 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+  <AnimatedHeading as="span" className="block">
+    EatProtein
+  </AnimatedHeading>
+
+  <AnimatedHeading
+    as="span"
+    className="block text-protein-green"
+  >
+    Franchise Opportunity
+  </AnimatedHeading>
+</h2>
 
           <p className="mt-3 max-w-[500px] text-sm leading-6 text-slate-700">
             Be a part of a growing movement towards healthier communities. Get

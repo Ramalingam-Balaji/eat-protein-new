@@ -240,7 +240,7 @@
 import { ArrowUp, Instagram, Facebook, Youtube } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { navItems } from "../data/navItems";
-import eatProteinIcon from "../assets/icon.png";
+import eatProteinIcon from "../assets/icon2.png";
 import { FaWhatsapp } from "react-icons/fa";
 
 import appStore from "../assets/images/app-store.png";

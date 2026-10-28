@@ -10,6 +10,8 @@ import {
   MapPin,
 } from "lucide-react";
 
+import AnimatedHeading from "./AnimatedHeading";
+
 const STEPS = [
   {
     icon: Search,
@@ -74,9 +76,17 @@ export default function HowItWorks() {
 
         {/* HOW EATPROTEIN WORKS */}
         <div>
-          <h2 className="text-xl font-black tracking-tight text-protein-dark sm:text-2xl">
-            How EatProtein <span className="text-protein-green">Works</span>
-          </h2>
+          <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+  <AnimatedHeading as="span" className="inline">
+    How EatProtein
+  </AnimatedHeading>{" "}
+  <AnimatedHeading
+    as="span"
+    className="inline text-protein-green"
+  >
+    Works
+  </AnimatedHeading>
+</h2>
 
           <p className="mt-1 text-xs leading-relaxed text-slate-500 sm:text-sm">
             From discovery to delivery — a simple journey to better nutrition.
@@ -124,9 +134,11 @@ export default function HowItWorks() {
 
         {/* WHY CHOOSE EATPROTEIN */}
         <div className="mt-7 sm:mt-8">
-          <h2 className="text-xl font-black tracking-tight text-protein-dark sm:text-2xl">
-            Why Choose EatProtein
-          </h2>
+          <AnimatedHeading
+  className="text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+>
+  Why Choose EatProtein
+</AnimatedHeading>
 
           {/* Feature cards */}
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">

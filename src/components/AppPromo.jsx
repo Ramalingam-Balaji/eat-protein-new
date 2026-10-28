@@ -1,5 +1,6 @@
 import { Apple, ArrowRight, Play } from "lucide-react";
 import SectionTag from "./SectionTag";
+import AnimatedHeading from "./AnimatedHeading";
 
 export default function AppPromo() {
   return (
@@ -7,11 +8,18 @@ export default function AppPromo() {
       <div className="mx-auto grid max-w-[1400px] items-center overflow-hidden rounded-2xl lg:grid-cols-[48%_52%]">
         <div className="px-1 py-5 lg:px-4">
           <SectionTag>EatProtein App</SectionTag>
-          <h2 className="mt-3 text-[29px] font-black leading-[1.05] text-protein-dark">
-            Your Nutrition Companion
-            <br />
-            <span className="text-protein-green">Anywhere, Anytime</span>
-          </h2>
+          <h2 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+  <AnimatedHeading as="span" className="block">
+    Your Nutrition Companion
+  </AnimatedHeading>
+
+  <AnimatedHeading
+    as="span"
+    className="block text-protein-green"
+  >
+    Anywhere, Anytime
+  </AnimatedHeading>
+</h2>
           <p className="mt-3 max-w-[520px] text-sm leading-5 text-slate-600">
             Explore food options, track your nutrition, get personalized
             recommendations and more — all in the EatProtein app.
@@ -50,13 +58,29 @@ export default function AppPromo() {
             </a>
           </div>
         </div>
-        <div className="relative h-[160px] md:h-[350px]">
-          <img
-            src="/assets/app-phones.png"
-            alt="EatProtein mobile app"
-            className="absolute bottom-0 right-0 h-full w-full object-cover object-left"
-          />
-        </div>
+        
+<div className="relative mx-auto flex h-[300px] w-full items-end justify-center overflow-hidden sm:h-[380px] md:h-[430px] lg:h-[500px] xl:h-[540px]">
+  <img
+    src="/assets/mascut.webp"
+    alt="EatProtein mascot showcasing the mobile app"
+    loading="lazy"
+    className="
+      absolute
+      bottom-0
+      left-1/2
+      h-full
+      w-full
+      -translate-x-1/2
+      object-contain
+      object-bottom
+      sm:w-[95%]
+      md:w-[90%]
+      lg:w-full
+      xl:w-[95%]
+    "
+  />
+</div>
+
       </div>
     </section>
   );

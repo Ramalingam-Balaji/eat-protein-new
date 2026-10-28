@@ -7,6 +7,8 @@ import FoodCategories from "../components/FoodCategories";
 import AppPromo from "../components/AppPromo";
 import HowItWorks from "../components/HowItWorks";
 import FranchiseSection from "../components/FranchiseSection";
+import AppGuidance from "../components/AppGuidance";
+import EatProteinJourney from "../components/EatProteinJourney";
 import ProteinPacks from "../components/ProteinPacks";
 //import About from "../components/About";
 //import Refer from "../components/Refer";
@@ -72,8 +74,11 @@ export default function Home() {
           <FoodCategories />
         </section>
 
-        <section id="app-promo" className="scroll-mt-24">
-          <AppPromo />
+          <section id="app-promo" className="scroll-mt-24">
+            <AppPromo />
+          </section>
+        <section id="app-guidance" className="scroll-mt-24">
+          <AppGuidance />
         </section>
 
         {/* <section id="about" className="scroll-mt-24">
@@ -87,9 +92,15 @@ export default function Home() {
           <FranchiseSection />
         </section>
 
+        <section id="eat-protein-journey" className="scroll-mt-24">
+          <EatProteinJourney />
+        </section>
+
         <section id="how-it-works" className="scroll-mt-24">
           <HowItWorks />
         </section>
+
+        
       </main>
     </div>
   );
