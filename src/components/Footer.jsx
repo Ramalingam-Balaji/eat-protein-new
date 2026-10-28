@@ -400,35 +400,35 @@ const goTo = (target) => {
   </div> */}
   <div className="flex flex-nowrap items-center gap-3 ">
               {/* App Store */}
-               <a
-               
-                 href="https://apps.apple.com/in/app/eat-protein/id6636532383"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 aria-label="Download EatProtein on the App Store"
-                 className="transition duration-200 hover:-translate-y-1 "
-               >
-                 <img
-                   src={appStore}
-                   alt="Download on the App Store"
-                   className="h-12 w-auto object-contain rounded-lg"
-                 />
-               </a>
+              {/* App Store */}
+<a
+  href="https://apps.apple.com/in/app/eat-protein/id6636532383"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Download EatProtein on the App Store"
+  className="rounded-[10px] bg-white p-[5px_10px] transition duration-200 hover:-translate-y-1"
+>
+  <img
+    src={appStore}
+    alt="Download on the App Store"
+    className="h-12 w-auto object-contain"
+  />
+</a>
 
-               {/* Google Play */}
-               <a
-                 href="https://play.google.com/store/apps/details?id=com.mannschaft.eatprotien"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 aria-label="Get EatProtein on Google Play"
-                 className="transition duration-200 hover:-translate-y-1"
-               >
-                 <img
-                   src={googlePlay}
-                   alt="Get it on Google Play"
-                   className="h-12 w-auto object-contain rounded-lg"
-                 />
-               </a>
+{/* Google Play */}
+<a
+  href="https://play.google.com/store/apps/details?id=com.mannschaft.eatprotien"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Get EatProtein on Google Play"
+  className="rounded-[10px] bg-white p-[5px_10px] transition duration-200 hover:-translate-y-1"
+>
+  <img
+    src={googlePlay}
+    alt="Get it on Google Play"
+    className="h-12 w-auto object-contain"
+  />
+</a>
              </div>
 
               
