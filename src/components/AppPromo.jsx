@@ -73,6 +73,7 @@ export default function AppPromo() {
       -translate-x-1/2
       object-contain
       object-bottom
+      animate-float
       sm:w-[95%]
       md:w-[90%]
       lg:w-full

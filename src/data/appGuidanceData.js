@@ -19,21 +19,21 @@ export const APP_GUIDANCE_CARDS = [
     title: "Your Health Journey",
     description:
       "Discover food choices that support your personal wellness and nutrition goals.",
-    image: "/images/portion-guide3.png",
+    image: "/images/protein-mobile-right1.png",
   },
   {
     id: 4,
     title: "Protein Calculator",
     description:
       "Calculate your daily protein needs using your age, height, weight, and activity level.",
-    image: "images/protein-mobile-right1.png",
+    image: "images/protein-mobile-left.png",
   },
   {
     id: 5,
     title: "Better Food Combinations",
     description:
       "Explore food combinations and discover ideas for balanced everyday meals.",
-    image: "/images/app-guidance/food-combinations.png",
+    image: "/images/portion-guide3.png",
   },
   {
     id: 6,
