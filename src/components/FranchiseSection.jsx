@@ -88,7 +88,7 @@ export default function FranchiseSection() {
         {/* Right side: Franchise image */}
         <div className="overflow-hidden rounded-2xl shadow-md">
           <img
-            src="/assets/franchise-store.png"
+            src="/assets/eat_pro_01.png"
             alt="EatProtein franchise store"
             className="h-[240px] w-full object-cover md:h-[400px]"
             loading="lazy"
