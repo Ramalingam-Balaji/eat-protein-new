@@ -65,7 +65,7 @@ export default function EatProteinJourney() {
           </span>
 
           <div className="mt-5">
-            <AnimatedHeading className="text-3xl font-black tracking-tight text-[#103B27] sm:text-4xl lg:text-5xl">
+            <AnimatedHeading className="text-2xl font-black tracking-tight text-[#103B27] sm:text-3xl lg:text-4xl">
               Your Journey to Better Nutrition
             </AnimatedHeading>
           </div>

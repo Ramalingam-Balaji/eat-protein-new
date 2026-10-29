@@ -25,14 +25,14 @@ export const APP_GUIDANCE_CARDS = [
     id: 4,
     title: "Protein Calculator",
     description:
-      "Calculate your daily protein needs using your age, height, weight, and activity level.",
+      "Calculate your daily protein needs using your age, height and weight.",
     image: "images/protein-mobile-left.png",
   },
   {
     id: 5,
-    title: "Better Food Combinations",
+    title: "Better Food Stores",
     description:
-      "Explore food combinations and discover ideas for balanced everyday meals.",
+      "Explore better food stores and discover ideas for balanced everyday meals.",
     image: "/images/portion-guide3.png",
   },
   {

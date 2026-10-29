@@ -30,7 +30,7 @@ export default function FranchiseSection() {
         <div>
           <SectionTag orange>Business Opportunity</SectionTag>
 
-    <h2 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+    <h2 className="mt-3 text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
   <AnimatedHeading as="span" className="block">
     EatProtein
   </AnimatedHeading>

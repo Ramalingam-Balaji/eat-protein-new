@@ -1694,7 +1694,7 @@ export default function ProteinCalculator() {
 
         {/* SECTION HEADING */}
         <div className="mb-7 text-center sm:mb-9">
-     <AnimatedHeading className="text-3xl font-black tracking-tight text-[#103B27] sm:text-4xl lg:text-5xl">
+     <AnimatedHeading className="mt-3 text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
   Know Your Protein Need & BMI
 </AnimatedHeading>
 

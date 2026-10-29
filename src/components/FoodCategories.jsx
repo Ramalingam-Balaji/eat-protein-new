@@ -132,9 +132,9 @@ export default function FoodCategories() {
             <SectionTag>Discover &amp; Choose</SectionTag>
 
            <AnimatedHeading
-  className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+  className="mt-3 text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl"
 >
-  High Protein Foods from Local Stores
+  Protein Foods from Local Stores
 </AnimatedHeading>
 
             <p className="mt-1 max-w-[700px] text-sm leading-relaxed text-slate-600">

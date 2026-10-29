@@ -8,7 +8,7 @@ export default function AppPromo() {
       <div className="mx-auto grid max-w-[1400px] items-center overflow-hidden rounded-2xl lg:grid-cols-[48%_52%]">
         <div className="px-1 py-5 lg:px-4">
           <SectionTag>EatProtein App</SectionTag>
-          <h2 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
   <AnimatedHeading as="span" className="block">
     Your Nutrition Companion
   </AnimatedHeading>

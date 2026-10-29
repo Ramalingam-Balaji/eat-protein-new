@@ -372,7 +372,7 @@ export default function AppGuidance() {
             OUR EAT-PROTEIN APP GUIDE
           </span> 
 
-          <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="mx-auto mt-4 max-w-3xl text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
   <AnimatedHeading as="span" className="inline">
     Personalised for
   </AnimatedHeading>{" "}
