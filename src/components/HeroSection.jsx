@@ -1569,7 +1569,7 @@ export default function HeroSection() {
            />
 
            <video
-   src="/videos/f1.mp4"
+   src="/videos/f2.mp4"
    autoPlay
    muted
    loop
