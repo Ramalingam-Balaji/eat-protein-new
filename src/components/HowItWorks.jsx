@@ -448,7 +448,7 @@ import {
 } from "lucide-react";
 
 import AnimatedHeading from "./AnimatedHeading";
-import mascotImage from "../assets/mascut.webp";
+import mascotImage from "../assets/eat_pro_2.png";
 
 const BENEFITS = [
   "Explore Foods",
