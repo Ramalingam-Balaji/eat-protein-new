@@ -1,20 +1,24 @@
 
 import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import scrollToSection from "../utils/scrollToSection";
 
 export default function ScrollManager() {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const previousPath = useRef(location.pathname);
 
   useEffect(() => {
     const currentPath = location.pathname;
+    const pathChanged = previousPath.current !== currentPath;
+
+    previousPath.current = currentPath;
+
+    // A section was requested from another page.
     const target =
       currentPath === "/" ? location.state?.scrollTo : null;
 
-    const pathChanged = previousPath.current !== currentPath;
-    previousPath.current = currentPath;
-
-    // If a section was requested, wait for Home to render.
     if (target) {
       let frame1;
       let frame2;
@@ -22,21 +26,13 @@ export default function ScrollManager() {
       const timeout = window.setTimeout(() => {
         frame1 = window.requestAnimationFrame(() => {
           frame2 = window.requestAnimationFrame(() => {
-            const section = document.getElementById(target);
+            const success = scrollToSection(target, "smooth");
 
-            if (section) {
-              const header = document.querySelector("header");
-              const headerHeight =
-                header?.getBoundingClientRect().height ?? 0;
-
-              const sectionTop =
-                window.scrollY +
-                section.getBoundingClientRect().top -
-                headerHeight;
-
-              window.scrollTo({
-                top: Math.max(0, sectionTop),
-                behavior: "smooth",
+            if (success) {
+              // Clear the request so it does not run again.
+              navigate("/", {
+                replace: true,
+                state: null,
               });
             } else {
               console.warn(
@@ -45,7 +41,7 @@ export default function ScrollManager() {
             }
           });
         });
-      }, 100);
+      }, 150);
 
       return () => {
         window.clearTimeout(timeout);
@@ -60,17 +56,93 @@ export default function ScrollManager() {
       };
     }
 
-    // For normal page navigation, start at the top.
+    // Normal route navigation starts at the top.
     if (pathChanged) {
       window.scrollTo({
         top: 0,
         behavior: "instant",
       });
     }
-  }, [location.pathname, location.state]);
+  }, [location.pathname, location.state, navigate]);
 
   return null;
 }
+
+
+
+
+// import { useEffect, useRef } from "react";
+// import { useLocation } from "react-router-dom";
+
+// export default function ScrollManager() {
+//   const location = useLocation();
+//   const previousPath = useRef(location.pathname);
+
+//   useEffect(() => {
+//     const currentPath = location.pathname;
+//     const target =
+//       currentPath === "/" ? location.state?.scrollTo : null;
+
+//     const pathChanged = previousPath.current !== currentPath;
+//     previousPath.current = currentPath;
+
+//     // If a section was requested, wait for Home to render.
+//     if (target) {
+//       let frame1;
+//       let frame2;
+
+//       const timeout = window.setTimeout(() => {
+//         frame1 = window.requestAnimationFrame(() => {
+//           frame2 = window.requestAnimationFrame(() => {
+//             const section = document.getElementById(target);
+
+//             if (section) {
+//               const header = document.querySelector("header");
+//               const headerHeight =
+//                 header?.getBoundingClientRect().height ?? 0;
+
+//               const sectionTop =
+//                 window.scrollY +
+//                 section.getBoundingClientRect().top -
+//                 headerHeight;
+
+//               window.scrollTo({
+//                 top: Math.max(0, sectionTop),
+//                 behavior: "smooth",
+//               });
+//             } else {
+//               console.warn(
+//                 `ScrollManager: Section "${target}" was not found.`
+//               );
+//             }
+//           });
+//         });
+//       }, 100);
+
+//       return () => {
+//         window.clearTimeout(timeout);
+
+//         if (frame1 !== undefined) {
+//           window.cancelAnimationFrame(frame1);
+//         }
+
+//         if (frame2 !== undefined) {
+//           window.cancelAnimationFrame(frame2);
+//         }
+//       };
+//     }
+
+//     // For normal page navigation, start at the top.
+//     if (pathChanged) {
+//       window.scrollTo({
+//         top: 0,
+//         behavior: "instant",
+//       });
+//     }
+//   }, [location.pathname, location.state]);
+
+//   return null;
+// }
 
 
 

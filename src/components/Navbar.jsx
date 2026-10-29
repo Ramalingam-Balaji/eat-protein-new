@@ -876,12 +876,313 @@
 
 
 
+// import { useCallback, useEffect, useState } from "react";
+// import { useLocation, useNavigate } from "react-router-dom";
+// import { Menu, X, Download } from "lucide-react";
+
+// import { navItems, appPromoItem } from "../data/navItems";
+// import eatProteinIcon from "../assets/icon2.png";
+
+// export default function Navbar() {
+//   const navigate = useNavigate();
+//   const location = useLocation();
+
+//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+//   // Scroll to a section, accounting for the sticky navbar.
+//   const scrollToSection = useCallback((target) => {
+//     if (!target) return;
+
+//     const section = document.getElementById(target);
+
+//     if (!section) {
+//       console.warn(`Navbar: Section with id "${target}" was not found.`);
+//       return;
+//     }
+
+//     const header = document.querySelector("header");
+//     const headerHeight = header?.getBoundingClientRect().height ?? 0;
+
+//     const sectionTop =
+//       section.getBoundingClientRect().top +
+//       window.scrollY -
+//       headerHeight -
+//       8;
+
+//     window.scrollTo({
+//       top: Math.max(0, sectionTop),
+//       behavior: "smooth",
+//     });
+//   }, []);
+
+//   // Navigate to another page.
+//   const handleRouteClick = useCallback(
+//     (path) => {
+//       if (!path) return;
+
+//       setMobileMenuOpen(false);
+
+//       if (location.pathname === path) {
+//         window.scrollTo({
+//           top: 0,
+//           behavior: "smooth",
+//         });
+//         return;
+//       }
+
+//       navigate(path);
+
+//       window.scrollTo({
+//         top: 0,
+//         behavior: "instant",
+//       });
+//     },
+//     [location.pathname, navigate]
+//   );
+
+//   // Navigate to a Home page section.
+//   const handleSectionClick = useCallback(
+//     (target) => {
+//       if (!target) return;
+
+//       setMobileMenuOpen(false);
+
+//       if (location.pathname !== "/") {
+//         navigate("/", {
+//           state: { scrollTo: target },
+//         });
+//         return;
+//       }
+
+//       scrollToSection(target);
+//     },
+//     [location.pathname, navigate, scrollToSection]
+//   );
+
+//   // Handle navigation links.
+//   const handleNavigation = useCallback(
+//     (item) => {
+//       if (!item) return;
+
+//       if (item.type === "route" && item.path) {
+//         handleRouteClick(item.path);
+//         return;
+//       }
+
+//       if (item.type === "section" && item.id) {
+//         handleSectionClick(item.id);
+//         return;
+//       }
+
+//       if (item.path) {
+//         handleRouteClick(
+//           item.path.startsWith("/") ? item.path : `/${item.path}`
+//         );
+//       }
+//     },
+//     [handleRouteClick, handleSectionClick]
+//   );
+
+//   // Complete section navigation after returning to Home.
+//   useEffect(() => {
+//     const target = location.state?.scrollTo;
+
+//     if (location.pathname !== "/" || !target) return;
+
+//     let frame1;
+//     let frame2;
+
+//     const timeout = window.setTimeout(() => {
+//       frame1 = requestAnimationFrame(() => {
+//         frame2 = requestAnimationFrame(() => {
+//           scrollToSection(target);
+
+//           navigate("/", {
+//             replace: true,
+//             state: {},
+//           });
+//         });
+//       });
+//     }, 100);
+
+//     return () => {
+//       window.clearTimeout(timeout);
+
+//       if (frame1 !== undefined) {
+//         cancelAnimationFrame(frame1);
+//       }
+
+//       if (frame2 !== undefined) {
+//         cancelAnimationFrame(frame2);
+//       }
+//     };
+//   }, [
+//     location.pathname,
+//     location.state,
+//     navigate,
+//     scrollToSection,
+//   ]);
+
+//   // Close the mobile menu when the route changes.
+//   useEffect(() => {
+//     setMobileMenuOpen(false);
+//   }, [location.pathname]);
+
+//   // Download App navigation.
+//   const handleAppClick = () => {
+//     handleSectionClick(appPromoItem.id);
+//   };
+
+//   // Logo navigation.
+//   const handleLogoClick = () => {
+//     handleSectionClick("home");
+//   };
+
+//   // Get the correct href for each navigation item.
+//   const getItemHref = (item) => {
+//     if (item.type === "route" && item.path) {
+//       return item.path.startsWith("/")
+//         ? item.path
+//         : `/${item.path}`;
+//     }
+
+//     if (item.type === "section" && item.id) {
+//       return location.pathname === "/"
+//         ? `#${item.id}`
+//         : `/#${item.id}`;
+//     }
+
+//     if (item.path) {
+//       return item.path.startsWith("/")
+//         ? item.path
+//         : `/${item.path}`;
+//     }
+
+//     return "#";
+//   };
+
+//   // Handle navigation using anchor elements.
+//   const handleAnchorNavigation = (event, item) => {
+//     // Preserve browser behavior for opening links in another tab.
+//     if (
+//       event.button !== 0 ||
+//       event.metaKey ||
+//       event.ctrlKey ||
+//       event.shiftKey ||
+//       event.altKey
+//     ) {
+//       return;
+//     }
+
+//     event.preventDefault();
+//     handleNavigation(item);
+//   };
+
+//   // Shared focus styles: visible for keyboard users,
+//   // not persistently displayed after ordinary mouse clicks.
+//   const focusStyles =
+//     "outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70";
+
+//   return (
+//     <header className="sticky top-0 z-50 w-full border-b border-white/15 bg-[#258440] shadow-md">
+//       <nav className="mx-auto flex min-h-[76px] w-full max-w-[1500px] items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+
+//         {/* Logo */}
+//         <button
+//           type="button"
+//           onClick={handleLogoClick}
+//           className={`shrink-0 rounded-lg ${focusStyles}`}
+//           aria-label="Go to Home"
+//         >
+//           <img
+//             src={eatProteinIcon}
+//             alt="EatProtein"
+//             className="h-11 w-auto object-contain sm:h-16"
+//           />
+//         </button>
+
+//         {/* Desktop navigation */}
+//         <div className="hidden min-w-0 flex-1 items-center justify-center gap-1 xl:flex">
+//           {navItems.map((item) => (
+//             <a
+//               key={item.label}
+//               href={getItemHref(item)}
+//               onClick={(event) => handleAnchorNavigation(event, item)}
+//               className={`whitespace-nowrap rounded-lg px-3 py-2 text-[16px] font-semibold text-white transition-all duration-200 hover:bg-white/15 hover:text-white ${focusStyles}`}
+//             >
+//               {item.label}
+//             </a>
+//           ))}
+//         </div>
+
+//         {/* Desktop Download App */}
+//         <button
+//           type="button"
+//           onClick={handleAppClick}
+//           className={`hidden shrink-0 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-[#1F7036] shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#EAF7EB] hover:shadow-lg xl:flex ${focusStyles}`}
+//         >
+//           <Download size={17} />
+//           <span>{appPromoItem.label}</span>
+//         </button>
+
+//         {/* Mobile and tablet menu button */}
+//         <button
+//           type="button"
+//           onClick={() => setMobileMenuOpen((open) => !open)}
+//           className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/15 xl:hidden ${focusStyles}`}
+//           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+//           aria-expanded={mobileMenuOpen}
+//           aria-controls="mobile-navigation"
+//         >
+//           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+//         </button>
+//       </nav>
+
+//       {/* Mobile and tablet navigation */}
+//       {mobileMenuOpen && (
+//         <div
+//           id="mobile-navigation"
+//           className="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-white/15 bg-[#1F7036] px-4 py-4 shadow-lg sm:px-6 xl:hidden"
+//         >
+//           <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-1">
+
+//             {/* Mobile navigation links */}
+//             {navItems.map((item) => (
+//               <a
+//                 key={item.label}
+//                 href={getItemHref(item)}
+//                 onClick={(event) => handleAnchorNavigation(event, item)}
+//                 className={`w-full rounded-lg px-4 py-3 text-left text-sm font-semibold text-white transition-colors hover:bg-white/15 ${focusStyles}`}
+//               >
+//                 {item.label}
+//               </a>
+//             ))}
+
+//             {/* Mobile Download App */}
+//             <button
+//               type="button"
+//               onClick={handleAppClick}
+//               className={`mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-[#1F7036] transition-colors hover:bg-[#EAF7EB] ${focusStyles}`}
+//             >
+//               <Download size={17} />
+//               {appPromoItem.label}
+//             </button>
+//           </div>
+//         </div>
+//       )}
+//     </header>
+//   );
+// }
+
+
+
 import { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Download } from "lucide-react";
 
 import { navItems, appPromoItem } from "../data/navItems";
 import eatProteinIcon from "../assets/icon2.png";
+import scrollToSection from "../utils/scrollToSection";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -889,33 +1190,12 @@ export default function Navbar() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Scroll to a section, accounting for the sticky navbar.
-  const scrollToSection = useCallback((target) => {
-    if (!target) return;
-
-    const section = document.getElementById(target);
-
-    if (!section) {
-      console.warn(`Navbar: Section with id "${target}" was not found.`);
-      return;
-    }
-
-    const header = document.querySelector("header");
-    const headerHeight = header?.getBoundingClientRect().height ?? 0;
-
-    const sectionTop =
-      section.getBoundingClientRect().top +
-      window.scrollY -
-      headerHeight -
-      8;
-
-    window.scrollTo({
-      top: Math.max(0, sectionTop),
-      behavior: "smooth",
-    });
+  // Scroll to a section on the current Home page.
+  const handleScrollToSection = useCallback((target) => {
+    scrollToSection(target, "smooth");
   }, []);
 
-  // Navigate to another page.
+  // Navigate to a regular page.
   const handleRouteClick = useCallback(
     (path) => {
       if (!path) return;
@@ -931,11 +1211,6 @@ export default function Navbar() {
       }
 
       navigate(path);
-
-      window.scrollTo({
-        top: 0,
-        behavior: "instant",
-      });
     },
     [location.pathname, navigate]
   );
@@ -954,12 +1229,12 @@ export default function Navbar() {
         return;
       }
 
-      scrollToSection(target);
+      handleScrollToSection(target);
     },
-    [location.pathname, navigate, scrollToSection]
+    [location.pathname, navigate, handleScrollToSection]
   );
 
-  // Handle navigation links.
+  // Handle navigation items.
   const handleNavigation = useCallback(
     (item) => {
       if (!item) return;
@@ -983,62 +1258,22 @@ export default function Navbar() {
     [handleRouteClick, handleSectionClick]
   );
 
-  // Complete section navigation after returning to Home.
-  useEffect(() => {
-    const target = location.state?.scrollTo;
-
-    if (location.pathname !== "/" || !target) return;
-
-    let frame1;
-    let frame2;
-
-    const timeout = window.setTimeout(() => {
-      frame1 = requestAnimationFrame(() => {
-        frame2 = requestAnimationFrame(() => {
-          scrollToSection(target);
-
-          navigate("/", {
-            replace: true,
-            state: {},
-          });
-        });
-      });
-    }, 100);
-
-    return () => {
-      window.clearTimeout(timeout);
-
-      if (frame1 !== undefined) {
-        cancelAnimationFrame(frame1);
-      }
-
-      if (frame2 !== undefined) {
-        cancelAnimationFrame(frame2);
-      }
-    };
-  }, [
-    location.pathname,
-    location.state,
-    navigate,
-    scrollToSection,
-  ]);
-
-  // Close the mobile menu when the route changes.
+  // Close the mobile menu whenever the route changes.
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // Download App navigation.
+  // Download App button.
   const handleAppClick = () => {
     handleSectionClick(appPromoItem.id);
   };
 
-  // Logo navigation.
+  // Logo returns to the Home section.
   const handleLogoClick = () => {
     handleSectionClick("home");
   };
 
-  // Get the correct href for each navigation item.
+  // Create URLs for links.
   const getItemHref = (item) => {
     if (item.type === "route" && item.path) {
       return item.path.startsWith("/")
@@ -1061,9 +1296,8 @@ export default function Navbar() {
     return "#";
   };
 
-  // Handle navigation using anchor elements.
+  // Keep normal browser behavior for opening a link in a new tab.
   const handleAnchorNavigation = (event, item) => {
-    // Preserve browser behavior for opening links in another tab.
     if (
       event.button !== 0 ||
       event.metaKey ||
@@ -1078,15 +1312,12 @@ export default function Navbar() {
     handleNavigation(item);
   };
 
-  // Shared focus styles: visible for keyboard users,
-  // not persistently displayed after ordinary mouse clicks.
   const focusStyles =
-    "outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70";
+    "outline-none focus-visible:ring-2 focus-visible:ring-white/70";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/15 bg-[#258440] shadow-md">
       <nav className="mx-auto flex min-h-[76px] w-full max-w-[1500px] items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
-
         {/* Logo */}
         <button
           type="button"
@@ -1107,7 +1338,9 @@ export default function Navbar() {
             <a
               key={item.label}
               href={getItemHref(item)}
-              onClick={(event) => handleAnchorNavigation(event, item)}
+              onClick={(event) =>
+                handleAnchorNavigation(event, item)
+              }
               className={`whitespace-nowrap rounded-lg px-3 py-2 text-[16px] font-semibold text-white transition-all duration-200 hover:bg-white/15 hover:text-white ${focusStyles}`}
             >
               {item.label}
@@ -1145,13 +1378,13 @@ export default function Navbar() {
           className="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-white/15 bg-[#1F7036] px-4 py-4 shadow-lg sm:px-6 xl:hidden"
         >
           <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-1">
-
-            {/* Mobile navigation links */}
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={getItemHref(item)}
-                onClick={(event) => handleAnchorNavigation(event, item)}
+                onClick={(event) =>
+                  handleAnchorNavigation(event, item)
+                }
                 className={`w-full rounded-lg px-4 py-3 text-left text-sm font-semibold text-white transition-colors hover:bg-white/15 ${focusStyles}`}
               >
                 {item.label}

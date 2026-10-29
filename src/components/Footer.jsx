@@ -237,6 +237,291 @@
 
 
 
+// import { ArrowUp, Instagram, Facebook, Youtube } from "lucide-react";
+// import { Link, useLocation, useNavigate } from "react-router-dom";
+// import { navItems } from "../data/navItems";
+// import eatProteinIcon from "../assets/icon2.png";
+// import { FaWhatsapp } from "react-icons/fa";
+
+// import appStore from "../assets/images/app-store.png";
+// import googlePlay from "../assets/images/google-play.png";
+
+// export default function Footer() {
+//   const location = useLocation();
+//   const navigate = useNavigate();
+
+//   // Scroll to the exact beginning of a section below the sticky navbar.
+//   const scrollToSection = (target) => {
+//     if (!target) return;
+
+//     const section = document.getElementById(target);
+
+//     if (!section) {
+//       console.warn(`Section with ID "${target}" was not found.`);
+//       return;
+//     }
+
+//     const navbar = document.querySelector("header");
+//     const navbarHeight = navbar?.getBoundingClientRect().height ?? 0;
+
+//     const targetPosition =
+//       window.scrollY +
+//       section.getBoundingClientRect().top -
+//       navbarHeight;
+
+//     window.scrollTo({
+//       top: Math.max(0, targetPosition),
+//       behavior: "smooth",
+//     });
+//   };
+
+//   // Handle links from the footer on the home page or another route.
+  
+// const goTo = (target) => {
+//   if (!target) return;
+
+//   if (location.pathname !== "/") {
+//     navigate("/", {
+//       state: { scrollTo: target },
+//     });
+
+//     return;
+//   }
+
+//   const section = document.getElementById(target);
+
+//   if (!section) {
+//     console.warn(`Footer: Section "${target}" was not found.`);
+//     return;
+//   }
+
+//   const navbar = document.querySelector("header");
+//   const navbarHeight = navbar?.getBoundingClientRect().height ?? 0;
+
+//   const sectionTop =
+//     window.scrollY +
+//     section.getBoundingClientRect().top -
+//     navbarHeight;
+
+//   window.scrollTo({
+//     top: Math.max(0, sectionTop),
+//     behavior: "smooth",
+//   });
+// };
+
+
+//   return (
+//     <footer className="scroll-mt-0 bg-[#023b21] px-5 py-9 text-white">
+//       <div className="mx-auto grid max-w-[1450px] gap-7 md:grid-cols-[1.5fr_1fr_1fr]">
+//         {/* Brand */}
+//         <div>
+//           <div className="flex items-center">
+//             <img
+//               src={eatProteinIcon}
+//               alt="EatProtein"
+//               className="h-16 w-auto object-contain"
+//             />
+//           </div>
+
+//           <p className="ml-2 mt-3 max-w-md text-sm leading-5 #ffffff">
+//             Your trusted partner for premium protein-rich foods and healthy nutrition solutions. Join thousands of satisfied customers on their wellness journey.
+//           </p>
+//         </div>
+
+//         {/* Quick Links */}
+//         <div>
+//           <h3 className="font-bold">Quick Links</h3>
+
+//           <div className="mt-3 grid grid-cols-2 gap-2">
+//             {navItems.map((item) => (
+//               <div key={item.label}>
+//                 {item.type === "route" ? (
+//                   <Link
+//                     to={item.path}
+//                     onClick={() => {
+//                       window.scrollTo({
+//                         top: 0,
+//                         behavior: "instant",
+//                       });
+//                     }}
+//                     className="text-left text-sm text-white transition-colors hover:text-green-100/70"
+//                   >
+//                     {item.label}
+//                   </Link>
+//                 ) : (
+//                   <button
+//                     type="button"
+//                     onClick={() => goTo(item.id)}
+//                     className="text-left text-sm text-white transition-colors hover:text-green-100/70"
+//                   >
+//                     {item.label}
+//                   </button>
+//                 )}
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+
+//         {/* Download App */}
+//         <div>
+//           <h3 className="font-bold">Download Our App</h3>
+
+          
+// <div className="mt-5 w-full">
+//   {/* App Store and Google Play — always side by side */}
+//   {/* <div className="flex w-full flex-row flex-nowrap items-center gap-2 sm:gap-3">
+//     <a
+//       href="https://apps.apple.com/in/app/eat-protein/id6636532383"
+//       target="_blank"
+//       rel="noopener noreferrer"
+//       aria-label="Download EatProtein on the App Store"
+//       className="block min-w-0 flex-1 transition duration-200 hover:-translate-y-1"
+//     >
+//       <img
+//         src={appStore}
+//         alt="Download on the App Store"
+//         className="h-10 w-full rounded-lg object-contain sm:h-12"
+//       />
+//     </a>
+
+//     <a
+//       href="https://play.google.com/store/apps/details?id=com.mannschaft.eatprotien"
+//       target="_blank"
+//       rel="noopener noreferrer"
+//       aria-label="Get EatProtein on Google Play"
+//       className="block min-w-0 flex-1 transition duration-200 hover:-translate-y-1"
+//     >
+//       <img
+//         src={googlePlay}
+//         alt="Get it on Google Play"
+//         className="h-10 w-full rounded-lg object-contain sm:h-12"
+//       />
+//     </a>
+//   </div> */}
+//   <div className="flex flex-nowrap items-center gap-3 ">
+//               {/* App Store */}
+//               {/* App Store */}
+// <a
+//   href="https://apps.apple.com/in/app/eat-protein/id6636532383"
+//   target="_blank"
+//   rel="noopener noreferrer"
+//   aria-label="Download EatProtein on the App Store"
+//   className="rounded-[8px] bg-white p-[4px_8px] transition duration-200 hover:-translate-y-1"
+// >
+//   <img
+//     src={appStore}
+//     alt="Download on the App Store"
+//     className="h-10 w-auto object-contain"
+//   />
+// </a>
+
+// {/* Google Play */}
+// <a
+//   href="https://play.google.com/store/apps/details?id=com.mannschaft.eatprotien"
+//   target="_blank"
+//   rel="noopener noreferrer"
+//   aria-label="Get EatProtein on Google Play"
+//   className="rounded-[8px] bg-white p-[4px_8px] transition duration-200 hover:-translate-y-1"
+// >
+//   <img
+//     src={googlePlay}
+//     alt="Get it on Google Play"
+//     className="h-10 w-auto object-contain"
+//   />
+// </a>
+//              </div>
+
+              
+
+//   {/* Social Media — always in one horizontal row */}
+//   <div className="mt-5 flex w-full flex-row flex-nowrap items-center gap-2 sm:gap-3">
+//     <a
+//       href="https://www.instagram.com/eatprotein_offl?igsh=cjJtZnVtdjlzcGpq"
+//       target="_blank"
+//       rel="noopener noreferrer"
+//       aria-label="Instagram"
+//       className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
+//     >
+//       <Instagram size={19} />
+//     </a>
+
+//     <a
+//       href="https://www.facebook.com/profile.php?id=61560653348052&mibextid=LQQJ4d"
+//       target="_blank"
+//       rel="noopener noreferrer"
+//       aria-label="Facebook"
+//       className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
+//     >
+//       <Facebook size={19} />
+//     </a>
+
+//     <a
+//       href="https://youtube.com/@eatprotein-offl?si=BFJs5bMrQZ6iZpy9"
+//       target="_blank"
+//       rel="noopener noreferrer"
+//       aria-label="YouTube"
+//       className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
+//     >
+//       <Youtube size={19} />
+//     </a>
+
+//     <a
+//       href="https://wa.me/9440701380"
+//       target="_blank"
+//       rel="noopener noreferrer"
+//       aria-label="WhatsApp"
+//       className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
+//     >
+//       <FaWhatsapp size={21} />
+//     </a>
+//   </div>
+// </div>
+
+//         </div>
+//       </div>
+
+//       {/* Bottom Bar */}
+//       <div className="mx-auto mt-7 flex max-w-[1450px] flex-col gap-4 border-t border-white/10 pt-5 text-[12px] text-white sm:flex-row sm:items-center sm:justify-between">
+//         {/* Copyright */}
+//         <span>
+//           © {new Date().getFullYear()} EatProtein. All rights reserved.
+//         </span>
+
+//         {/* Policy Links */}
+//         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+//           <Link to="/terms" className="transition-colors hover:text-green-100/70">
+//             Terms &amp; Conditions
+//           </Link>
+
+//           <Link to="/privacy" className="transition-colors hover:text-green-100/70">
+//             Privacy Policy
+//           </Link>
+
+//           <Link to="/shipping" className="transition-colors hover:text-green-100/70">
+//             Shipping Policy
+//           </Link>
+//         </div>
+
+//         {/* Back to Top */}
+//         <button
+//           type="button"
+//           onClick={() =>
+//             window.scrollTo({
+//               top: 0,
+//               behavior: "smooth",
+//             })
+//           }
+//           className="flex items-center gap-1 transition-colors hover:text-green-100/70"
+//         >
+//           Back to top <ArrowUp size={12} />
+//         </button>
+//       </div>
+//     </footer>
+//   );
+// }
+
+
+
 import { ArrowUp, Instagram, Facebook, Youtube } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { navItems } from "../data/navItems";
@@ -246,69 +531,48 @@ import { FaWhatsapp } from "react-icons/fa";
 import appStore from "../assets/images/app-store.png";
 import googlePlay from "../assets/images/google-play.png";
 
+import scrollToSection from "../utils/scrollToSection";
+
 export default function Footer() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Scroll to the exact beginning of a section below the sticky navbar.
-  const scrollToSection = (target) => {
+  // Navigate to a Home section from the footer.
+  const goTo = (target) => {
     if (!target) return;
 
-    const section = document.getElementById(target);
+    if (location.pathname !== "/") {
+      navigate("/", {
+        state: { scrollTo: target },
+      });
 
-    if (!section) {
-      console.warn(`Section with ID "${target}" was not found.`);
       return;
     }
 
-    const navbar = document.querySelector("header");
-    const navbarHeight = navbar?.getBoundingClientRect().height ?? 0;
+    scrollToSection(target, "smooth");
+  };
 
-    const targetPosition =
-      window.scrollY +
-      section.getBoundingClientRect().top -
-      navbarHeight;
+  // Navigate to a regular route from the footer.
+  const handleRouteClick = (event, path) => {
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    if (location.pathname !== path) return;
+
+    event.preventDefault();
 
     window.scrollTo({
-      top: Math.max(0, targetPosition),
+      top: 0,
       behavior: "smooth",
     });
   };
-
-  // Handle links from the footer on the home page or another route.
-  
-const goTo = (target) => {
-  if (!target) return;
-
-  if (location.pathname !== "/") {
-    navigate("/", {
-      state: { scrollTo: target },
-    });
-
-    return;
-  }
-
-  const section = document.getElementById(target);
-
-  if (!section) {
-    console.warn(`Footer: Section "${target}" was not found.`);
-    return;
-  }
-
-  const navbar = document.querySelector("header");
-  const navbarHeight = navbar?.getBoundingClientRect().height ?? 0;
-
-  const sectionTop =
-    window.scrollY +
-    section.getBoundingClientRect().top -
-    navbarHeight;
-
-  window.scrollTo({
-    top: Math.max(0, sectionTop),
-    behavior: "smooth",
-  });
-};
-
 
   return (
     <footer className="scroll-mt-0 bg-[#023b21] px-5 py-9 text-white">
@@ -323,8 +587,10 @@ const goTo = (target) => {
             />
           </div>
 
-          <p className="ml-2 mt-3 max-w-md text-sm leading-5 #ffffff">
-            Your trusted partner for premium protein-rich foods and healthy nutrition solutions. Join thousands of satisfied customers on their wellness journey.
+          <p className="ml-2 mt-3 max-w-md text-sm leading-5 text-white">
+            Your trusted partner for premium protein-rich foods and healthy
+            nutrition solutions. Join thousands of satisfied customers on
+            their wellness journey.
           </p>
         </div>
 
@@ -338,12 +604,9 @@ const goTo = (target) => {
                 {item.type === "route" ? (
                   <Link
                     to={item.path}
-                    onClick={() => {
-                      window.scrollTo({
-                        top: 0,
-                        behavior: "instant",
-                      });
-                    }}
+                    onClick={(event) =>
+                      handleRouteClick(event, item.path)
+                    }
                     className="text-left text-sm text-white transition-colors hover:text-green-100/70"
                   >
                     {item.label}
@@ -362,121 +625,85 @@ const goTo = (target) => {
           </div>
         </div>
 
-        {/* Download App */}
+        {/* Download App and Social Media */}
         <div>
           <h3 className="font-bold">Download Our App</h3>
 
-          
-<div className="mt-5 w-full">
-  {/* App Store and Google Play — always side by side */}
-  {/* <div className="flex w-full flex-row flex-nowrap items-center gap-2 sm:gap-3">
-    <a
-      href="https://apps.apple.com/in/app/eat-protein/id6636532383"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Download EatProtein on the App Store"
-      className="block min-w-0 flex-1 transition duration-200 hover:-translate-y-1"
-    >
-      <img
-        src={appStore}
-        alt="Download on the App Store"
-        className="h-10 w-full rounded-lg object-contain sm:h-12"
-      />
-    </a>
+          <div className="mt-5 w-full">
+            {/* App Store and Google Play */}
+            <div className="flex flex-nowrap items-center gap-3">
+              <a
+                href="https://apps.apple.com/in/app/eat-protein/id6636532383"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download EatProtein on the App Store"
+                className="rounded-[8px] bg-white p-[4px_8px] transition duration-200 hover:-translate-y-1"
+              >
+                <img
+                  src={appStore}
+                  alt="Download on the App Store"
+                  className="h-10 w-auto object-contain"
+                />
+              </a>
 
-    <a
-      href="https://play.google.com/store/apps/details?id=com.mannschaft.eatprotien"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Get EatProtein on Google Play"
-      className="block min-w-0 flex-1 transition duration-200 hover:-translate-y-1"
-    >
-      <img
-        src={googlePlay}
-        alt="Get it on Google Play"
-        className="h-10 w-full rounded-lg object-contain sm:h-12"
-      />
-    </a>
-  </div> */}
-  <div className="flex flex-nowrap items-center gap-3 ">
-              {/* App Store */}
-              {/* App Store */}
-<a
-  href="https://apps.apple.com/in/app/eat-protein/id6636532383"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Download EatProtein on the App Store"
-  className="rounded-[8px] bg-white p-[4px_8px] transition duration-200 hover:-translate-y-1"
->
-  <img
-    src={appStore}
-    alt="Download on the App Store"
-    className="h-10 w-auto object-contain"
-  />
-</a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.mannschaft.eatprotien"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Get EatProtein on Google Play"
+                className="rounded-[8px] bg-white p-[4px_8px] transition duration-200 hover:-translate-y-1"
+              >
+                <img
+                  src={googlePlay}
+                  alt="Get it on Google Play"
+                  className="h-10 w-auto object-contain"
+                />
+              </a>
+            </div>
 
-{/* Google Play */}
-<a
-  href="https://play.google.com/store/apps/details?id=com.mannschaft.eatprotien"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Get EatProtein on Google Play"
-  className="rounded-[8px] bg-white p-[4px_8px] transition duration-200 hover:-translate-y-1"
->
-  <img
-    src={googlePlay}
-    alt="Get it on Google Play"
-    className="h-10 w-auto object-contain"
-  />
-</a>
-             </div>
+            {/* Social Media */}
+            <div className="mt-5 flex w-full flex-row flex-nowrap items-center gap-2 sm:gap-3">
+              <a
+                href="https://www.instagram.com/eatprotein_offl?igsh=cjJtZnVtdjlzcGpq"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
+              >
+                <Instagram size={19} />
+              </a>
 
-              
+              <a
+                href="https://www.facebook.com/profile.php?id=61560653348052&mibextid=LQQJ4d"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
+              >
+                <Facebook size={19} />
+              </a>
 
-  {/* Social Media — always in one horizontal row */}
-  <div className="mt-5 flex w-full flex-row flex-nowrap items-center gap-2 sm:gap-3">
-    <a
-      href="https://www.instagram.com/eatprotein_offl?igsh=cjJtZnVtdjlzcGpq"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Instagram"
-      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
-    >
-      <Instagram size={19} />
-    </a>
+              <a
+                href="https://youtube.com/@eatprotein-offl?si=BFJs5bMrQZ6iZpy9"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
+              >
+                <Youtube size={19} />
+              </a>
 
-    <a
-      href="https://www.facebook.com/profile.php?id=61560653348052&mibextid=LQQJ4d"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Facebook"
-      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
-    >
-      <Facebook size={19} />
-    </a>
-
-    <a
-      href="https://youtube.com/@eatprotein-offl?si=BFJs5bMrQZ6iZpy9"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="YouTube"
-      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
-    >
-      <Youtube size={19} />
-    </a>
-
-    <a
-      href="https://wa.me/9440701380"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="WhatsApp"
-      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
-    >
-      <FaWhatsapp size={21} />
-    </a>
-  </div>
-</div>
-
+              <a
+                href="https://wa.me/9440701380"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-green-100/20 text-green-100 transition-all duration-300 hover:border-green-300 hover:bg-green-100/10 hover:text-white sm:h-10 sm:w-10"
+              >
+                <FaWhatsapp size={21} />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -489,15 +716,27 @@ const goTo = (target) => {
 
         {/* Policy Links */}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <Link to="/terms" className="transition-colors hover:text-green-100/70">
+          <Link
+            to="/terms"
+            onClick={(event) => handleRouteClick(event, "/terms")}
+            className="transition-colors hover:text-green-100/70"
+          >
             Terms &amp; Conditions
           </Link>
 
-          <Link to="/privacy" className="transition-colors hover:text-green-100/70">
+          <Link
+            to="/privacy"
+            onClick={(event) => handleRouteClick(event, "/privacy")}
+            className="transition-colors hover:text-green-100/70"
+          >
             Privacy Policy
           </Link>
 
-          <Link to="/shipping" className="transition-colors hover:text-green-100/70">
+          <Link
+            to="/shipping"
+            onClick={(event) => handleRouteClick(event, "/shipping")}
+            className="transition-colors hover:text-green-100/70"
+          >
             Shipping Policy
           </Link>
         </div>

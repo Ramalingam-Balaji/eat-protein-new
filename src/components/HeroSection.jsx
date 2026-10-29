@@ -1476,7 +1476,7 @@ export default function HeroSection() {
       />
 
       {/* Main hero: equal 50/50 columns on desktop */}
-      <div className="relative mx-auto grid min-h-[650px] w-full max-w-[1600px] grid-cols-1 items-center gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:min-h-[700px] lg:grid-cols-2 lg:gap-6 lg:px-12 lg:py-14 xl:px-16">
+      <div className="relative mx-auto grid min-h-[650px] w-full max-w-[1600px] grid-cols-1 items-center gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:min-h-[700px] lg:grid-cols-2 lg:gap-6 lg:px-12 lg:py-12 xl:px-16">
 
         {/* LEFT: Existing content */}
         <div className="relative z-10 flex min-w-0 flex-col justify-center">
@@ -1569,7 +1569,7 @@ export default function HeroSection() {
            />
 
            <video
-   src="/videos/eatprotein-app1.webm"
+   src="/videos/f1.mp4"
    autoPlay
    muted
    loop

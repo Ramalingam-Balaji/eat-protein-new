@@ -164,13 +164,28 @@ button {
   box-sizing: border-box;
 }
 
-html {
+/* html {
   width: 100%;
   min-width: 320px;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
+} */
+
+/* Consistent spacing when navigating to any section */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id],
+div[id="home"],
+div[id="protein-calculator"],
+div[id="high-protein-foods"],
+div[id="how-it-works"],
+div[id="app-promo"],
+div[id="franchise"] {
+  scroll-margin-top: 90px;
 }
 
 body {

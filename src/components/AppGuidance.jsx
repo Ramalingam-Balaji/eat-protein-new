@@ -274,12 +274,21 @@ function GuidanceCard({ card }) {
 
       {/* Card image */}
       
-<div className="mt-5 flex h-[245px] items-center justify-center overflow-hidden rounded-2xl bg-[#eff9e9] sm:h-[325px]">
+{/* <div className="mt-4 flex h-[300px] items-center justify-center overflow-hidden rounded-2xl bg-[#eff9e9] sm:h-[380px]">
   <img
     src={card.image}
     alt={card.title}
     loading="lazy"
     className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+  />
+</div> */}
+
+<div className="mt-3 flex h-[285px] items-center justify-center overflow-hidden rounded-2xl bg-[#eff9e9] sm:h-[340px]">
+  <img
+    src={card.image}
+    alt={card.title}
+    loading="lazy"
+    className="h-[245px] w-full object-contain transition-transform duration-500 group-hover:scale-105 sm:h-[325px]"
   />
 </div>
 
