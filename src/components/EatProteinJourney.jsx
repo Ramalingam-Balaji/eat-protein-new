@@ -26,7 +26,7 @@ export default function EatProteinJourney() {
       {
         root: null,
         // Activate a step when it reaches the middle of the viewport.
-        rootMargin: "-43% 0px -43% 0px",
+        rootMargin: "-45% 0px -45% 0px",
         threshold: 0,
       }
     );
@@ -127,10 +127,10 @@ export default function EatProteinJourney() {
                             : "pointer-events-none translate-x-8 opacity-0"
                         }`}
                       >
-                        <TimelineDate
+                        {/* <TimelineDate
                           date={item.date}
                           isActive={isActive}
-                        />
+                        /> */}
                       </div>
                     ) : (
                       /* Description card on the left */
@@ -179,10 +179,10 @@ export default function EatProteinJourney() {
                             : "pointer-events-none -translate-x-8 opacity-0"
                         }`}
                       >
-                        <TimelineDate
+                        {/* <TimelineDate
                           date={item.date}
                           isActive={isActive}
-                        />
+                        /> */}
                       </div>
                     )}
                   </div>
