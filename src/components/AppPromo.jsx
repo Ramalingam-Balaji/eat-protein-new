@@ -108,7 +108,7 @@ export default function AppPromo() {
           <SectionTag>EatProtein App</SectionTag>
 
           {/* Heading */}
-          <h2 className="mt-3 text-[25px] font-extrabold leading-tight tracking-tight text-slate-900 min-[375px]:text-2xl sm:text-3xl lg:text-4xl xl:text-[42px]">
+          <h2 className="mt-3 text-[25px] font-extrabold leading-tight tracking-tight text-slate-900 min-[375px]:text-2xl sm:text-3xl lg:text-[33px] xl:text-[42px]">
 
             <AnimatedHeading as="span" className="block">
               Your Nutrition Companion
