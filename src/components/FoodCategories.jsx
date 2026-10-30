@@ -77,6 +77,133 @@
 
 
 
+// import { motion, useReducedMotion } from "framer-motion";
+// import { CATEGORIES } from "../data/homeData";
+// import SectionTag from "./SectionTag";
+// import AnimatedHeading from "./AnimatedHeading";
+
+// export default function FoodCategories() {
+//   const shouldReduceMotion = useReducedMotion();
+
+//   // Animate all cards in sequence.
+//   const containerVariants = {
+//     hidden: {},
+//     visible: {
+//       transition: {
+//         staggerChildren: shouldReduceMotion ? 0 : 0.12,
+//         delayChildren: shouldReduceMotion ? 0 : 0.05,
+//       },
+//     },
+//   };
+
+//   // Smooth falling animation with a gentle settling effect.
+//   const cardVariants = {
+//     hidden: {
+//       opacity: 0,
+//       y: shouldReduceMotion ? 0 : -45,
+//       scale: shouldReduceMotion ? 1 : 0.96,
+//     },
+//     visible: {
+//       opacity: 1,
+//       y: 0,
+//       scale: 1,
+//       transition: {
+//         y: {
+//           duration: shouldReduceMotion ? 0 : 0.65,
+//           ease: [0.22, 1, 0.36, 1],
+//         },
+//         opacity: {
+//           duration: shouldReduceMotion ? 0 : 0.4,
+//         },
+//         scale: {
+//           duration: shouldReduceMotion ? 0 : 0.55,
+//           ease: "easeOut",
+//         },
+//       },
+//     },
+//   };
+
+//   return (
+//     <section id="foods" className="scroll-mt-20 bg-white px-5 py-7">
+//       <div className="mx-auto max-w-[1400px]">
+//         {/* Section Heading */}
+//         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-5">
+//           <div className="min-w-0 flex-1">
+//             <SectionTag>Discover &amp; Choose</SectionTag>
+
+//            <AnimatedHeading
+//   className="mt-3 text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl"
+// >
+//   Protein Foods from Local Stores
+// </AnimatedHeading>
+
+//             <p className="mt-1 max-w-[700px] text-sm leading-relaxed text-slate-600">
+//               Explore a wide range of protein-rich foods available in stores
+//               near you. Each product comes with nutrition intelligence to help
+//               you make the right choice.
+//             </p>
+//           </div>
+//         </div>
+
+//         {/* Animated Category Cards */}
+// <motion.div
+//   variants={containerVariants}
+//   initial="hidden"
+//   whileInView="visible"
+//   viewport={{
+//     once: false,
+//     amount: 0.15,
+//     margin: "0px",
+//   }}
+//   className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4 lg:grid-cols-7"
+// >
+//           {CATEGORIES.map((category) => (
+//             <motion.button
+//               type="button"
+//               key={category.title}
+//               variants={cardVariants}
+//               aria-label={`Explore ${category.title}`}
+//               className="group overflow-hidden rounded-xl border border-slate-100 bg-white shadow-card transition-shadow duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+//               whileHover={
+//                 shouldReduceMotion
+//                   ? undefined
+//                   : {
+//                       y: -5,
+//                       transition: { duration: 0.2 },
+//                     }
+//               }
+//               whileTap={
+//                 shouldReduceMotion
+//                   ? undefined
+//                   : { scale: 0.98 }
+//               }
+//             >
+//               {/* Category Image */}
+//               <div className="h-[110px] overflow-hidden bg-slate-50">
+//                 <img
+//                   src={category.image}
+//                   alt={category.title}
+//                   loading="lazy"
+//                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+//                 />
+//               </div>
+
+//               {/* Category Title */}
+//               <div className="flex min-h-[50px] items-center justify-center p-2 text-center">
+//                 <span className="text-[12px] font-bold leading-3 text-slate-800">
+//                   {category.title}
+//                 </span>
+//               </div>
+//             </motion.button>
+//           ))}
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// }
+
+
+
 import { motion, useReducedMotion } from "framer-motion";
 import { CATEGORIES } from "../data/homeData";
 import SectionTag from "./SectionTag";
@@ -124,46 +251,55 @@ export default function FoodCategories() {
   };
 
   return (
-    <section id="foods" className="scroll-mt-20 bg-white px-5 py-7">
-      <div className="mx-auto max-w-[1400px]">
+    <section
+      id="foods"
+      className="w-full scroll-mt-20 overflow-hidden bg-white py-9 sm:py-11 md:py-12 lg:py-14"
+    >
+      {/* Common section container */}
+      <div className="mx-auto w-full max-w-[1500px] px-3 sm:px-5 md:px-8 lg:px-10 xl:px-12 2xl:px-14">
+
         {/* Section Heading */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-5">
+        <div className="flex flex-col gap-3 sm:gap-4">
+
           <div className="min-w-0 flex-1">
+
             <SectionTag>Discover &amp; Choose</SectionTag>
 
-           <AnimatedHeading
-  className="mt-3 text-2xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl"
->
-  Protein Foods from Local Stores
-</AnimatedHeading>
+            <AnimatedHeading
+              className="mt-3 text-[22px] font-extrabold leading-tight tracking-tight text-slate-900 min-[375px]:text-2xl sm:text-3xl lg:text-4xl"
+            >
+              Protein Foods from Local Stores
+            </AnimatedHeading>
 
-            <p className="mt-1 max-w-[700px] text-sm leading-relaxed text-slate-600">
+            <p className="mt-2 max-w-[700px] text-xs leading-5 text-slate-600 min-[375px]:text-sm sm:leading-relaxed">
               Explore a wide range of protein-rich foods available in stores
               near you. Each product comes with nutrition intelligence to help
               you make the right choice.
             </p>
+
           </div>
         </div>
 
         {/* Animated Category Cards */}
-<motion.div
-  variants={containerVariants}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{
-    once: false,
-    amount: 0.15,
-    margin: "0px",
-  }}
-  className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4 lg:grid-cols-7"
->
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{
+            once: false,
+            amount: 0.15,
+            margin: "0px",
+          }}
+          className="mt-5 grid grid-cols-2 gap-2 min-[375px]:gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7"
+        >
+
           {CATEGORIES.map((category) => (
             <motion.button
               type="button"
               key={category.title}
               variants={cardVariants}
               aria-label={`Explore ${category.title}`}
-              className="group overflow-hidden rounded-xl border border-slate-100 bg-white shadow-card transition-shadow duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="group min-w-0 overflow-hidden rounded-lg border border-slate-100 bg-white shadow-card transition-shadow duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 sm:rounded-xl"
               whileHover={
                 shouldReduceMotion
                   ? undefined
@@ -178,8 +314,9 @@ export default function FoodCategories() {
                   : { scale: 0.98 }
               }
             >
+
               {/* Category Image */}
-              <div className="h-[110px] overflow-hidden bg-slate-50">
+              <div className="h-[85px] overflow-hidden bg-slate-50 min-[375px]:h-[100px] sm:h-[120px] md:h-[130px] lg:h-[120px] xl:h-[125px] 2xl:h-[140px]">
                 <img
                   src={category.image}
                   alt={category.title}
@@ -189,13 +326,15 @@ export default function FoodCategories() {
               </div>
 
               {/* Category Title */}
-              <div className="flex min-h-[50px] items-center justify-center p-2 text-center">
-                <span className="text-[12px] font-bold leading-3 text-slate-800">
+              <div className="flex min-h-[44px] items-center justify-center p-1.5 text-center min-[375px]:min-h-[48px] sm:min-h-[52px] sm:p-2">
+                <span className="break-words text-[10px] font-bold leading-tight text-slate-800 min-[375px]:text-[11px] sm:text-xs">
                   {category.title}
                 </span>
               </div>
+
             </motion.button>
           ))}
+
         </motion.div>
       </div>
     </section>

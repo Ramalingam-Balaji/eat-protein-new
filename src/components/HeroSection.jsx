@@ -1416,6 +1416,197 @@
 
 
 
+// import {
+//   ArrowRight,
+//   Heart,
+//   Leaf,
+//   ShieldCheck,
+//   Store,
+// } from "lucide-react";
+// import { useCallback } from "react";
+
+// import { BENEFITS } from "../data/homeData";
+// import BANNERS from "../data/bannerData";
+// import AnimatedHeading from "./AnimatedHeading";
+
+// // Replace this import with the actual mobile mockup image path.
+// import mobileAppImage from "../assets/mobile-app.png";
+
+// const icons = {
+//   leaf: Leaf,
+//   shield: ShieldCheck,
+//   store: Store,
+//   heart: Heart,
+// };
+
+// export default function HeroSection() {
+//   const scrollToSection = useCallback((sectionId) => {
+//     const section = document.getElementById(sectionId);
+//     if (!section) return;
+
+//     const navbar = document.querySelector("header");
+//     const navbarHeight = navbar?.getBoundingClientRect().height ?? 0;
+
+//     const targetPosition =
+//       section.getBoundingClientRect().top +
+//       window.scrollY -
+//       navbarHeight -
+//       8;
+
+//     window.scrollTo({
+//       top: Math.max(0, targetPosition),
+//       behavior: "smooth",
+//     });
+//   }, []);
+
+//   return (
+//     <section
+//       id="home"
+//       className="relative isolate w-full overflow-hidden bg-gradient-to-br from-[#17632F] via-[#258440] to-[#0DAA78] text-white"
+//     >
+//       {/* Full-width background decoration */}
+//       <div
+//         aria-hidden="true"
+//         className="pointer-events-none absolute -left-40 top-10 h-96 w-96 rounded-full bg-emerald-300/10 blur-3xl"
+//       />
+
+//       <div
+//         aria-hidden="true"
+//         className="pointer-events-none absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-lime-300/10 blur-3xl"
+//       />
+
+//       {/* Main hero: equal 50/50 columns on desktop */}
+//       <div className="relative mx-auto grid min-h-[650px] w-full max-w-[1600px] grid-cols-1 items-center gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:min-h-[700px] lg:grid-cols-2 lg:gap-6 lg:px-12 lg:py-12 xl:px-16">
+
+//         {/* LEFT: Existing content */}
+//         <div className="relative z-10 flex min-w-0 flex-col justify-center">
+//           <div className="mb-6 w-fit rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold text-white backdrop-blur-sm sm:text-sm">
+//             <span className="mr-2 inline-block h-2.5 w-2.5 rounded-full bg-amber-400" />
+//             EatProtein · Your Daily Nutrition Companion
+//           </div>
+
+//           <h1 className="max-w-[650px] text-3xl font-black leading-[1.08] tracking-[-1.2px] text-white sm:text-5xl md:text-6xl xl:text-[68px]">
+//             <AnimatedHeading as="span" className="block">
+//               Healthy
+//             </AnimatedHeading>
+
+//             <AnimatedHeading as="span" className="block">
+//               Protein Choices
+//             </AnimatedHeading>
+
+//             <span className="block text-[#C5E4CA]">
+//               {"for a Better You".split("").map((letter, index) => (
+//                 <span
+//                   key={`${letter}-${index}`}
+//                   className="inline-block animate-fade-in"
+//                   style={{
+//                     animationDelay: `${index * 45}ms`,
+//                     animationFillMode: "both",
+//                   }}
+//                 >
+//                   {letter === " " ? "\u00A0" : letter}
+//                 </span>
+//               ))}
+//             </span>
+//           </h1>
+
+//           <p className="mt-6 max-w-[540px] text-sm leading-7 text-white/90 sm:text-base sm:leading-8 lg:text-lg">
+//             Discover high protein foods from local stores, make smarter
+//             choices with nutrition intelligence and live a healthier,
+//             stronger life.
+//           </p>
+
+//           {/* Existing action buttons */}
+//           <div className="mt-7 flex flex-wrap items-center gap-4">
+//             <button
+//               type="button"
+//               onClick={() => scrollToSection("high-protein-foods")}
+//               className="flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-extrabold text-[#086346] shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#EAF7EB] hover:shadow-xl sm:px-8"
+//             >
+//               Explore High Protein Foods
+//               <ArrowRight size={18} />
+//             </button>
+
+//             <button
+//               type="button"
+//               onClick={() => scrollToSection("protein-calculator")}
+//               className="flex items-center justify-center rounded-full border border-white/60 bg-white/5 px-6 py-3.5 text-sm font-bold text-white transition duration-300 hover:bg-white/15 sm:px-8"
+//             >
+//               Calculate Your Needs
+//             </button>
+//           </div>
+
+//           {/* Existing benefits */}
+//           <div className="mt-9 grid max-w-[560px] grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-4 sm:gap-3">
+//             {BENEFITS.map((item) => {
+//               const Icon = icons[item.icon];
+
+//               if (!Icon) return null;
+
+//               return (
+//                 <div key={item.title} className="text-center">
+//                   <div className="mx-auto mb-2 grid h-12 w-12 place-items-center rounded-full border border-white/30 bg-white/10 text-white transition duration-300 hover:-translate-y-1 hover:bg-white/20 sm:h-[52px] sm:w-[52px]">
+//                     <Icon size={22} strokeWidth={1.8} />
+//                   </div>
+
+//                   <p className="text-xs font-bold leading-4 text-white">
+//                     {item.title}
+//                   </p>
+
+//                   <p className="text-xs leading-4 text-white/80">
+//                     {item.subtitle}
+//                   </p>
+//                 </div>
+//               );
+//             })}
+//           </div>
+//         </div>
+
+//         {/* RIGHT: Mobile app image */}
+//             <div className="relative flex min-w-0 items-center justify-center py-5 lg:min-h-[600px] lg:py-0">          <div
+//            aria-hidden="true"
+//              className="absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-300/15 blur-3xl sm:h-[430px] sm:w-[430px] lg:h-[480px] lg:w-[480px]"
+//            />
+
+//            <video
+//    src="/videos/f2.mp4"
+//    autoPlay
+//    muted
+//    loop
+//    playsInline
+//    preload="metadata"
+//    aria-label="EatProtein mobile app preview"
+//    className="relative z-10 h-auto max-h-[580px] w-full max-w-[260px] object-contain drop-shadow-2xl sm:max-w-[310px] lg:max-h-[620px] lg:max-w-[340px] xl:max-w-[370px]"
+//  />
+
+//            {/* Floating badge */}
+//            <div className="absolute right-0 top-10 z-20 hidden rounded-2xl border border-white/40 bg-white px-3 py-3 text-[#103B27] shadow-xl sm:block lg:right-0 xl:right-4">
+//              <p className="text-xl font-black text-[#0DAA78]">
+//                Eat Healthy
+//              </p>
+//              <p className="mt-1 text-xs font-bold">
+//                Smart Protein Choices
+//              </p>
+//            </div>
+
+//            {/* Floating nutrition badge */}
+//            <div className="absolute bottom-10 left-0 z-20 hidden rounded-2xl border border-white/40 bg-white px-3 py-3 text-[#103B27] shadow-xl sm:block lg:left-0 xl:left-4">
+//              <p className="text-lg font-black text-amber-500">
+//                Daily Nutrition
+//              </p>
+//              <p className="mt-1 text-xs font-bold">
+//                Build Healthier Habits
+//              </p>
+//            </div>
+//          </div>
+//        </div>
+//     </section>
+//   );
+// }
+
+
+
+
 import {
   ArrowRight,
   Heart,
@@ -1426,11 +1617,7 @@ import {
 import { useCallback } from "react";
 
 import { BENEFITS } from "../data/homeData";
-import BANNERS from "../data/bannerData";
 import AnimatedHeading from "./AnimatedHeading";
-
-// Replace this import with the actual mobile mockup image path.
-import mobileAppImage from "../assets/mobile-app.png";
 
 const icons = {
   leaf: Leaf,
@@ -1462,30 +1649,101 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative isolate w-full overflow-hidden bg-gradient-to-br from-[#17632F] via-[#258440] to-[#0DAA78] text-white"
+      className="
+        relative isolate w-full overflow-hidden
+        bg-gradient-to-br from-[#17632F] via-[#258440] to-[#0DAA78]
+        text-white
+      "
     >
-      {/* Full-width background decoration */}
+      {/* Background Decorations */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-40 top-10 h-96 w-96 rounded-full bg-emerald-300/10 blur-3xl"
+        className="
+          pointer-events-none absolute
+          -left-40 top-10
+          h-64 w-64 rounded-full
+          bg-emerald-300/10 blur-3xl
+          sm:h-96 sm:w-96
+        "
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-lime-300/10 blur-3xl"
+        className="
+          pointer-events-none absolute
+          -right-20 bottom-0
+          h-64 w-64 rounded-full
+          bg-lime-300/10 blur-3xl
+          sm:h-96 sm:w-96
+        "
       />
 
-      {/* Main hero: equal 50/50 columns on desktop */}
-      <div className="relative mx-auto grid min-h-[650px] w-full max-w-[1600px] grid-cols-1 items-center gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:min-h-[700px] lg:grid-cols-2 lg:gap-6 lg:px-12 lg:py-12 xl:px-16">
+      {/* Main Hero Container */}
+      <div
+        className="
+          relative mx-auto grid w-full max-w-[1500px]
+          grid-cols-1 items-center
+          gap-8
+          px-4 py-10
+          sm:px-6 sm:py-12
+          md:px-8 md:py-14
+          lg:min-h-[650px]
+          lg:grid-cols-2
+          lg:gap-8
+          lg:px-10 lg:py-12
+          xl:min-h-[700px]
+          xl:gap-10 xl:px-12
+          2xl:px-14
+        "
+      >
 
-        {/* LEFT: Existing content */}
-        <div className="relative z-10 flex min-w-0 flex-col justify-center">
-          <div className="mb-6 w-fit rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold text-white backdrop-blur-sm sm:text-sm">
-            <span className="mr-2 inline-block h-2.5 w-2.5 rounded-full bg-amber-400" />
-            EatProtein · Your Daily Nutrition Companion
+        {/* LEFT CONTENT */}
+        <div
+          className="
+            relative z-10 flex min-w-0
+            flex-col justify-center
+            text-center
+            lg:text-left
+          "
+        >
+          {/* Hero Label */}
+          <div
+            className="
+              mx-auto mb-5 flex w-fit max-w-full
+              items-center justify-center
+              rounded-full border border-white/25
+              bg-white/10 px-3 py-2
+              text-[10px] font-bold
+              text-white backdrop-blur-sm
+              sm:mb-6 sm:px-4 sm:text-xs
+              md:text-sm
+              lg:mx-0
+            "
+          >
+            <span className="mr-2 h-2 w-2 shrink-0 rounded-full bg-amber-400 sm:h-2.5 sm:w-2.5" />
+
+            <span>
+              EatProtein · Your Daily Nutrition Companion
+            </span>
           </div>
 
-          <h1 className="max-w-[650px] text-3xl font-black leading-[1.08] tracking-[-1.2px] text-white sm:text-5xl md:text-6xl xl:text-[68px]">
+          {/* Main Heading */}
+          <h1
+            className="
+              mx-auto w-full max-w-[650px]
+              text-[32px] font-black
+              leading-[1.12]
+              tracking-[-1px]
+              text-white
+              min-[375px]:text-[36px]
+              sm:text-5xl
+              md:text-6xl
+              lg:mx-0
+              lg:text-[52px]
+              xl:text-[62px]
+              2xl:text-[68px]
+            "
+          >
             <AnimatedHeading as="span" className="block">
               Healthy
             </AnimatedHeading>
@@ -1510,50 +1768,134 @@ export default function HeroSection() {
             </span>
           </h1>
 
-          <p className="mt-6 max-w-[540px] text-sm leading-7 text-white/90 sm:text-base sm:leading-8 lg:text-lg">
+          {/* Description */}
+          <p
+            className="
+              mx-auto mt-5 w-full max-w-[540px]
+              text-[13px] leading-6
+              text-white/90
+              sm:mt-6 sm:text-sm sm:leading-7
+              md:text-base md:leading-8
+              lg:mx-0 lg:text-left
+              xl:text-lg
+            "
+          >
             Discover high protein foods from local stores, make smarter
             choices with nutrition intelligence and live a healthier,
             stronger life.
           </p>
 
-          {/* Existing action buttons */}
-          <div className="mt-7 flex flex-wrap items-center gap-4">
+          {/* Action Buttons */}
+          <div
+            className="
+              mt-6 flex w-full
+              flex-col items-stretch justify-center
+              gap-3
+              min-[480px]:flex-row min-[480px]:flex-wrap
+              min-[480px]:items-center
+              lg:justify-start
+              xl:mt-7 xl:gap-4
+            "
+          >
             <button
               type="button"
               onClick={() => scrollToSection("high-protein-foods")}
-              className="flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-extrabold text-[#086346] shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#EAF7EB] hover:shadow-xl sm:px-8"
+              className="
+                flex min-h-[46px]
+                items-center justify-center gap-2
+                rounded-full bg-white
+                px-5 py-3
+                text-xs font-extrabold
+                text-[#086346]
+                shadow-lg
+                transition duration-300
+                hover:-translate-y-1
+                hover:bg-[#EAF7EB]
+                hover:shadow-xl
+                sm:px-6 sm:text-sm
+                xl:px-8 xl:py-3.5
+              "
             >
               Explore High Protein Foods
-              <ArrowRight size={18} />
+              <ArrowRight size={17} className="shrink-0" />
             </button>
 
             <button
               type="button"
               onClick={() => scrollToSection("protein-calculator")}
-              className="flex items-center justify-center rounded-full border border-white/60 bg-white/5 px-6 py-3.5 text-sm font-bold text-white transition duration-300 hover:bg-white/15 sm:px-8"
+              className="
+                flex min-h-[46px]
+                items-center justify-center
+                rounded-full
+                border border-white/60
+                bg-white/5
+                px-5 py-3
+                text-xs font-bold text-white
+                transition duration-300
+                hover:bg-white/15
+                sm:px-6 sm:text-sm
+                xl:px-8 xl:py-3.5
+              "
             >
               Calculate Your Needs
             </button>
           </div>
 
-          {/* Existing benefits */}
-          <div className="mt-9 grid max-w-[560px] grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-4 sm:gap-3">
+          {/* Benefits */}
+          <div
+            className="
+              mx-auto mt-8 grid w-full max-w-[560px]
+              grid-cols-2
+              gap-x-3 gap-y-5
+              min-[480px]:grid-cols-4
+              sm:mt-9 sm:gap-3
+              lg:mx-0
+            "
+          >
             {BENEFITS.map((item) => {
               const Icon = icons[item.icon];
 
               if (!Icon) return null;
 
               return (
-                <div key={item.title} className="text-center">
-                  <div className="mx-auto mb-2 grid h-12 w-12 place-items-center rounded-full border border-white/30 bg-white/10 text-white transition duration-300 hover:-translate-y-1 hover:bg-white/20 sm:h-[52px] sm:w-[52px]">
-                    <Icon size={22} strokeWidth={1.8} />
+                <div
+                  key={item.title}
+                  className="min-w-0 text-center"
+                >
+                  <div
+                    className="
+                      mx-auto mb-2 grid
+                      h-10 w-10 place-items-center
+                      rounded-full
+                      border border-white/30
+                      bg-white/10 text-white
+                      transition duration-300
+                      hover:-translate-y-1
+                      hover:bg-white/20
+                      sm:h-12 sm:w-12
+                      lg:h-[52px] lg:w-[52px]
+                    "
+                  >
+                    <Icon size={21} strokeWidth={1.8} />
                   </div>
 
-                  <p className="text-xs font-bold leading-4 text-white">
+                  <p
+                    className="
+                      break-words text-[11px]
+                      font-bold leading-4 text-white
+                      sm:text-xs
+                    "
+                  >
                     {item.title}
                   </p>
 
-                  <p className="text-xs leading-4 text-white/80">
+                  <p
+                    className="
+                      break-words text-[10px]
+                      leading-4 text-white/80
+                      sm:text-xs
+                    "
+                  >
                     {item.subtitle}
                   </p>
                 </div>
@@ -1562,50 +1904,110 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT: Mobile app image */}
-            <div className="relative flex min-w-0 items-center justify-center py-5 lg:min-h-[600px] lg:py-0">          <div
-           aria-hidden="true"
-             className="absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-300/15 blur-3xl sm:h-[430px] sm:w-[430px] lg:h-[480px] lg:w-[480px]"
-           />
+        {/* RIGHT CONTENT: VIDEO */}
+        <div
+          className="
+            relative flex min-w-0
+            items-center justify-center
+            py-5
+            sm:py-7
+            lg:min-h-[560px]
+            lg:py-0
+            xl:min-h-[620px]
+          "
+        >
+          {/* Video Background Glow */}
+          <div
+            aria-hidden="true"
+            className="
+              absolute left-1/2 top-1/2
+              h-[260px] w-[260px]
+              -translate-x-1/2 -translate-y-1/2
+              rounded-full bg-emerald-300/15 blur-3xl
+              min-[375px]:h-[300px] min-[375px]:w-[300px]
+              sm:h-[430px] sm:w-[430px]
+              lg:h-[400px] lg:w-[400px]
+              xl:h-[480px] xl:w-[480px]
+            "
+          />
 
-           <video
-   src="/videos/f2.mp4"
-   autoPlay
-   muted
-   loop
-   playsInline
-   preload="metadata"
-   aria-label="EatProtein mobile app preview"
-   className="relative z-10 h-auto max-h-[580px] w-full max-w-[260px] object-contain drop-shadow-2xl sm:max-w-[310px] lg:max-h-[620px] lg:max-w-[340px] xl:max-w-[370px]"
- />
+          {/* App Preview Video */}
+          <video
+            src="/videos/f2.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="EatProtein mobile app preview"
+            className="
+              relative z-10
+              h-auto w-full
+              max-w-[230px]
+              max-h-[420px]
+              object-contain
+              drop-shadow-2xl
+              min-[375px]:max-w-[260px]
+              sm:max-w-[310px] sm:max-h-[520px]
+              md:max-w-[330px]
+              lg:max-h-[540px] lg:max-w-[300px]
+              xl:max-h-[620px] xl:max-w-[350px]
+              2xl:max-w-[370px]
+            "
+          />
 
-           {/* Floating badge */}
-           <div className="absolute right-0 top-10 z-20 hidden rounded-2xl border border-white/40 bg-white px-3 py-3 text-[#103B27] shadow-xl sm:block lg:right-0 xl:right-4">
-             <p className="text-xl font-black text-[#0DAA78]">
-               Eat Healthy
-             </p>
-             <p className="mt-1 text-xs font-bold">
-               Smart Protein Choices
-             </p>
-           </div>
+          {/* Floating Badge - Top Right */}
+          <div
+            className="
+              absolute right-0 top-6 z-20
+              hidden rounded-2xl
+              border border-white/40
+              bg-white px-3 py-3
+              text-[#103B27] shadow-xl
+              sm:block
+              md:right-2
+              lg:right-0 lg:top-10
+              xl:right-3
+              2xl:right-4
+            "
+          >
+            <p className="text-base font-black text-[#0DAA78] sm:text-xl">
+              Eat Healthy
+            </p>
 
-           {/* Floating nutrition badge */}
-           <div className="absolute bottom-10 left-0 z-20 hidden rounded-2xl border border-white/40 bg-white px-3 py-3 text-[#103B27] shadow-xl sm:block lg:left-0 xl:left-4">
-             <p className="text-lg font-black text-amber-500">
-               Daily Nutrition
-             </p>
-             <p className="mt-1 text-xs font-bold">
-               Build Healthier Habits
-             </p>
-           </div>
-         </div>
-       </div>
+            <p className="mt-1 text-[10px] font-bold sm:text-xs">
+              Smart Protein Choices
+            </p>
+          </div>
+
+          {/* Floating Badge - Bottom Left */}
+          <div
+            className="
+              absolute bottom-6 left-0 z-20
+              hidden rounded-2xl
+              border border-white/40
+              bg-white px-3 py-3
+              text-[#103B27] shadow-xl
+              sm:block
+              md:left-2
+              lg:bottom-10 lg:left-0
+              xl:left-3
+              2xl:left-4
+            "
+          >
+            <p className="text-base font-black text-amber-500 sm:text-lg">
+              Daily Nutrition
+            </p>
+
+            <p className="mt-1 text-[10px] font-bold sm:text-xs">
+              Build Healthier Habits
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
-
-
-
 
 
 

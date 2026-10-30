@@ -66,9 +66,9 @@ export default function Home() {
           <ProteinCalculator />
         </section>
 
-        {/* <section id="protein-packs" className="scroll-mt-24">
+        <section id="protein-packs" className="scroll-mt-24">
           <ProteinPacks />
-        </section> */}
+        </section>
 
         <section id="high-protein-foods" className="scroll-mt-24">
           <FoodCategories />

@@ -1176,6 +1176,239 @@
 
 
 
+// import { useCallback, useEffect, useState } from "react";
+// import { useLocation, useNavigate } from "react-router-dom";
+// import { Menu, X, Download } from "lucide-react";
+
+// import { navItems, appPromoItem } from "../data/navItems";
+// import eatProteinIcon from "../assets/icon2.png";
+// import scrollToSection from "../utils/scrollToSection";
+
+// export default function Navbar() {
+//   const navigate = useNavigate();
+//   const location = useLocation();
+
+//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+//   // Scroll to a section on the current Home page.
+//   const handleScrollToSection = useCallback((target) => {
+//     scrollToSection(target, "smooth");
+//   }, []);
+
+//   // Navigate to a regular page.
+//   const handleRouteClick = useCallback(
+//     (path) => {
+//       if (!path) return;
+
+//       setMobileMenuOpen(false);
+
+//       if (location.pathname === path) {
+//         window.scrollTo({
+//           top: 0,
+//           behavior: "smooth",
+//         });
+//         return;
+//       }
+
+//       navigate(path);
+//     },
+//     [location.pathname, navigate]
+//   );
+
+//   // Navigate to a Home page section.
+//   const handleSectionClick = useCallback(
+//     (target) => {
+//       if (!target) return;
+
+//       setMobileMenuOpen(false);
+
+//       if (location.pathname !== "/") {
+//         navigate("/", {
+//           state: { scrollTo: target },
+//         });
+//         return;
+//       }
+
+//       handleScrollToSection(target);
+//     },
+//     [location.pathname, navigate, handleScrollToSection]
+//   );
+
+//   // Handle navigation items.
+//   const handleNavigation = useCallback(
+//     (item) => {
+//       if (!item) return;
+
+//       if (item.type === "route" && item.path) {
+//         handleRouteClick(item.path);
+//         return;
+//       }
+
+//       if (item.type === "section" && item.id) {
+//         handleSectionClick(item.id);
+//         return;
+//       }
+
+//       if (item.path) {
+//         handleRouteClick(
+//           item.path.startsWith("/") ? item.path : `/${item.path}`
+//         );
+//       }
+//     },
+//     [handleRouteClick, handleSectionClick]
+//   );
+
+//   // Close the mobile menu whenever the route changes.
+//   useEffect(() => {
+//     setMobileMenuOpen(false);
+//   }, [location.pathname]);
+
+//   // Download App button.
+//   const handleAppClick = () => {
+//     handleSectionClick(appPromoItem.id);
+//   };
+
+//   // Logo returns to the Home section.
+//   const handleLogoClick = () => {
+//     handleSectionClick("home");
+//   };
+
+//   // Create URLs for links.
+//   const getItemHref = (item) => {
+//     if (item.type === "route" && item.path) {
+//       return item.path.startsWith("/")
+//         ? item.path
+//         : `/${item.path}`;
+//     }
+
+//     if (item.type === "section" && item.id) {
+//       return location.pathname === "/"
+//         ? `#${item.id}`
+//         : `/#${item.id}`;
+//     }
+
+//     if (item.path) {
+//       return item.path.startsWith("/")
+//         ? item.path
+//         : `/${item.path}`;
+//     }
+
+//     return "#";
+//   };
+
+//   // Keep normal browser behavior for opening a link in a new tab.
+//   const handleAnchorNavigation = (event, item) => {
+//     if (
+//       event.button !== 0 ||
+//       event.metaKey ||
+//       event.ctrlKey ||
+//       event.shiftKey ||
+//       event.altKey
+//     ) {
+//       return;
+//     }
+
+//     event.preventDefault();
+//     handleNavigation(item);
+//   };
+
+//   const focusStyles =
+//     "outline-none focus-visible:ring-2 focus-visible:ring-white/70";
+
+//   return (
+//     <header className="sticky top-0 z-50 w-full border-b border-white/15 bg-[#258440] shadow-md">
+//       <nav className="mx-auto flex min-h-[76px] w-full max-w-[1500px] items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+//         {/* Logo */}
+//         <button
+//           type="button"
+//           onClick={handleLogoClick}
+//           className={`shrink-0 rounded-lg ${focusStyles}`}
+//           aria-label="Go to Home"
+//         >
+//           <img
+//             src={eatProteinIcon}
+//             alt="EatProtein"
+//             className="h-11 w-auto object-contain sm:h-16"
+//           />
+//         </button>
+
+//         {/* Desktop navigation */}
+//         <div className="hidden min-w-0 flex-1 items-center justify-center gap-1 xl:flex">
+//           {navItems.map((item) => (
+//             <a
+//               key={item.label}
+//               href={getItemHref(item)}
+//               onClick={(event) =>
+//                 handleAnchorNavigation(event, item)
+//               }
+//               className={`whitespace-nowrap rounded-lg px-3 py-2 text-[16px] font-semibold text-white transition-all duration-200 hover:bg-white/15 hover:text-white ${focusStyles}`}
+//             >
+//               {item.label}
+//             </a>
+//           ))}
+//         </div>
+
+//         {/* Desktop Download App */}
+//         <button
+//           type="button"
+//           onClick={handleAppClick}
+//           className={`hidden shrink-0 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-[#1F7036] shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#EAF7EB] hover:shadow-lg xl:flex ${focusStyles}`}
+//         >
+//           <Download size={17} />
+//           <span>{appPromoItem.label}</span>
+//         </button>
+
+//         {/* Mobile and tablet menu button */}
+//         <button
+//           type="button"
+//           onClick={() => setMobileMenuOpen((open) => !open)}
+//           className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/15 xl:hidden ${focusStyles}`}
+//           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+//           aria-expanded={mobileMenuOpen}
+//           aria-controls="mobile-navigation"
+//         >
+//           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+//         </button>
+//       </nav>
+
+//       {/* Mobile and tablet navigation */}
+//       {mobileMenuOpen && (
+//         <div
+//           id="mobile-navigation"
+//           className="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-white/15 bg-[#1F7036] px-4 py-4 shadow-lg sm:px-6 xl:hidden"
+//         >
+//           <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-1">
+//             {navItems.map((item) => (
+//               <a
+//                 key={item.label}
+//                 href={getItemHref(item)}
+//                 onClick={(event) =>
+//                   handleAnchorNavigation(event, item)
+//                 }
+//                 className={`w-full rounded-lg px-4 py-3 text-left text-sm font-semibold text-white transition-colors hover:bg-white/15 ${focusStyles}`}
+//               >
+//                 {item.label}
+//               </a>
+//             ))}
+
+//             {/* Mobile Download App */}
+//             <button
+//               type="button"
+//               onClick={handleAppClick}
+//               className={`mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-[#1F7036] transition-colors hover:bg-[#EAF7EB] ${focusStyles}`}
+//             >
+//               <Download size={17} />
+//               {appPromoItem.label}
+//             </button>
+//           </div>
+//         </div>
+//       )}
+//     </header>
+//   );
+// }
+
+
+
 import { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Download } from "lucide-react";
@@ -1190,7 +1423,7 @@ export default function Navbar() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Scroll to a section on the current Home page.
+  // Scroll to Home page section.
   const handleScrollToSection = useCallback((target) => {
     scrollToSection(target, "smooth");
   }, []);
@@ -1215,7 +1448,7 @@ export default function Navbar() {
     [location.pathname, navigate]
   );
 
-  // Navigate to a Home page section.
+  // Navigate to Home page section.
   const handleSectionClick = useCallback(
     (target) => {
       if (!target) return;
@@ -1258,22 +1491,22 @@ export default function Navbar() {
     [handleRouteClick, handleSectionClick]
   );
 
-  // Close the mobile menu whenever the route changes.
+  // Close menu when route changes.
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // Download App button.
+  // Download App.
   const handleAppClick = () => {
     handleSectionClick(appPromoItem.id);
   };
 
-  // Logo returns to the Home section.
+  // Logo navigation.
   const handleLogoClick = () => {
     handleSectionClick("home");
   };
 
-  // Create URLs for links.
+  // Generate navigation URLs.
   const getItemHref = (item) => {
     if (item.type === "route" && item.path) {
       return item.path.startsWith("/")
@@ -1296,7 +1529,7 @@ export default function Navbar() {
     return "#";
   };
 
-  // Keep normal browser behavior for opening a link in a new tab.
+  // Preserve browser behavior for opening links in new tabs.
   const handleAnchorNavigation = (event, item) => {
     if (
       event.button !== 0 ||
@@ -1313,11 +1546,23 @@ export default function Navbar() {
   };
 
   const focusStyles =
-    "outline-none focus-visible:ring-2 focus-visible:ring-white/70";
+    "outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#258440]";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/15 bg-[#258440] shadow-md">
-      <nav className="mx-auto flex min-h-[76px] w-full max-w-[1500px] items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+
+      <nav
+        className="
+          mx-auto flex
+          min-h-[64px] sm:min-h-[72px] lg:min-h-[76px]
+          w-full max-w-[1500px]
+          items-center justify-between
+          gap-2 sm:gap-4
+          px-3 sm:px-5 md:px-6 lg:px-8 xl:px-10
+          py-2 sm:py-2.5
+        "
+      >
+
         {/* Logo */}
         <button
           type="button"
@@ -1328,12 +1573,27 @@ export default function Navbar() {
           <img
             src={eatProteinIcon}
             alt="EatProtein"
-            className="h-11 w-auto object-contain sm:h-16"
+            className="
+              h-10 w-auto max-w-[125px]
+              object-contain
+              sm:h-12 sm:max-w-[150px]
+              lg:h-14 lg:max-w-[170px]
+              xl:h-16 xl:max-w-[190px]
+            "
           />
         </button>
 
-        {/* Desktop navigation */}
-        <div className="hidden min-w-0 flex-1 items-center justify-center gap-1 xl:flex">
+        {/* Desktop Navigation */}
+        <div
+          className="
+            hidden min-w-0 flex-1
+            items-center justify-center
+            gap-0.5
+            lg:flex
+            xl:gap-1.5
+            2xl:gap-2
+          "
+        >
           {navItems.map((item) => (
             <a
               key={item.label}
@@ -1341,7 +1601,18 @@ export default function Navbar() {
               onClick={(event) =>
                 handleAnchorNavigation(event, item)
               }
-              className={`whitespace-nowrap rounded-lg px-3 py-2 text-[16px] font-semibold text-white transition-all duration-200 hover:bg-white/15 hover:text-white ${focusStyles}`}
+              className={`
+                whitespace-nowrap rounded-lg
+                px-2 py-2
+                text-[13px] font-semibold
+                text-white
+                transition-all duration-200
+                hover:bg-white/15
+                hover:text-white
+                xl:px-2.5 xl:text-sm
+                2xl:px-3 2xl:text-base
+                ${focusStyles}
+              `}
             >
               {item.label}
             </a>
@@ -1352,32 +1623,78 @@ export default function Navbar() {
         <button
           type="button"
           onClick={handleAppClick}
-          className={`hidden shrink-0 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-[#1F7036] shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#EAF7EB] hover:shadow-lg xl:flex ${focusStyles}`}
+          className={`
+            hidden shrink-0
+            items-center justify-center
+            gap-1.5
+            rounded-full
+            bg-white
+            px-3 py-2.5
+            text-xs font-bold
+            text-[#1F7036]
+            shadow-sm
+            transition-all duration-200
+            hover:-translate-y-0.5
+            hover:bg-[#EAF7EB]
+            hover:shadow-lg
+            lg:flex
+            xl:gap-2 xl:px-4 xl:text-sm
+            2xl:px-5
+            ${focusStyles}
+          `}
         >
-          <Download size={17} />
+          <Download size={16} />
           <span>{appPromoItem.label}</span>
         </button>
 
-        {/* Mobile and tablet menu button */}
+        {/* Mobile and Tablet Menu Button */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen((open) => !open)}
-          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/15 xl:hidden ${focusStyles}`}
+          className={`
+            flex h-10 w-10 shrink-0
+            items-center justify-center
+            rounded-lg
+            text-white
+            transition-colors
+            hover:bg-white/15
+            lg:hidden
+            ${focusStyles}
+          `}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-navigation"
         >
-          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {mobileMenuOpen ? (
+            <X size={26} />
+          ) : (
+            <Menu size={26} />
+          )}
         </button>
+
       </nav>
 
-      {/* Mobile and tablet navigation */}
+      {/* Mobile and Tablet Navigation */}
       {mobileMenuOpen && (
         <div
           id="mobile-navigation"
-          className="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-white/15 bg-[#1F7036] px-4 py-4 shadow-lg sm:px-6 xl:hidden"
+          className="
+            max-h-[calc(100dvh-64px)]
+            overflow-y-auto overscroll-contain
+            border-t border-white/15
+            bg-[#1F7036]
+            px-3 py-3
+            shadow-lg
+            sm:px-5 sm:py-4
+            lg:max-h-[calc(100dvh-76px)]
+          "
         >
-          <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-1">
+          <div
+            className="
+              mx-auto flex w-full max-w-[1500px]
+              flex-col gap-1
+            "
+          >
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -1385,7 +1702,17 @@ export default function Navbar() {
                 onClick={(event) =>
                   handleAnchorNavigation(event, item)
                 }
-                className={`w-full rounded-lg px-4 py-3 text-left text-sm font-semibold text-white transition-colors hover:bg-white/15 ${focusStyles}`}
+                className={`
+                  flex min-h-[44px] w-full
+                  items-center
+                  rounded-lg
+                  px-4 py-3
+                  text-left text-sm font-semibold
+                  text-white
+                  transition-colors
+                  hover:bg-white/15
+                  ${focusStyles}
+                `}
               >
                 {item.label}
               </a>
@@ -1395,7 +1722,17 @@ export default function Navbar() {
             <button
               type="button"
               onClick={handleAppClick}
-              className={`mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-[#1F7036] transition-colors hover:bg-[#EAF7EB] ${focusStyles}`}
+              className={`
+                mt-3 flex min-h-[46px] w-full
+                items-center justify-center
+                gap-2 rounded-full
+                bg-white px-5 py-3
+                text-sm font-bold
+                text-[#1F7036]
+                transition-colors
+                hover:bg-[#EAF7EB]
+                ${focusStyles}
+              `}
             >
               <Download size={17} />
               {appPromoItem.label}
@@ -1403,6 +1740,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
     </header>
   );
 }
