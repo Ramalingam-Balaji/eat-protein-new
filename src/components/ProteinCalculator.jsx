@@ -2398,7 +2398,7 @@ export default function ProteinCalculator() {
               text-2xl font-extrabold
               leading-tight tracking-tight
               text-slate-900
-              min-[375px]:text-[28px]
+              min-[375px]:text-[27px]
               sm:text-3xl
               md:text-4xl
             "
