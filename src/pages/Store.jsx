@@ -2249,6 +2249,8 @@ import {
 
 import { getFranchiseOwners } from "../api/franchiseOwnerApi";
 
+import AnimatedHeading from "../components/AnimatedHeading";
+
 /* =========================================
    STORE PARTNER DATA
 ========================================= */

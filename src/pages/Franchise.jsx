@@ -1270,7 +1270,7 @@ export default function Franchise() {
             <div className="absolute inset-8 rounded-full bg-green-200/40 blur-3xl" />
 
             <img
-              src="/assets/franchise-hero-reference.png"
+              src="/assets/franchise-hero-reference (2).png"
               alt="EatProtein area partnership and local food store illustration"
               className="relative z-10 mx-auto aspect-[3/2] w-full rounded-2xl object-cover object-center sm:rounded-3xl"
             />

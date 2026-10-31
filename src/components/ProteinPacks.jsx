@@ -1377,67 +1377,49 @@ export default function ProteinPacks() {
                       </p>
 
                       {/* Features */}
-                      <ul className="mt-3 w-full space-y-2">
+<ul className="mt-3 mb-5 w-full space-y-2">
+  {pack.features.map((feature, featureIndex) => (
+    <motion.li
+      key={feature}
+      initial={{ opacity: 0, x: -12 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.4,
+        delay: 0.25 + featureIndex * 0.08,
+      }}
+      className="flex min-w-0 items-start gap-1.5 text-[10px] leading-4 text-[#40594d] min-[375px]:gap-2 min-[375px]:text-[11px] sm:text-xs"
+    >
+      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#168b57] sm:h-[19px] sm:w-[19px]">
+        <CheckCircle2
+          size={12}
+          className="text-white"
+          strokeWidth={2.5}
+        />
+      </span>
 
-                        {pack.features.map((feature, featureIndex) => (
+      <span className="min-w-0 break-words">{feature}</span>
+    </motion.li>
+  ))}
+</ul>
 
-                          <motion.li
-                            key={feature}
-                            initial={{
-                              opacity: 0,
-                              x: -12,
-                            }}
-                            whileInView={{
-                              opacity: 1,
-                              x: 0,
-                            }}
-                            viewport={{ once: true }}
-                            transition={{
-                              duration: 0.4,
-                              delay: 0.25 + featureIndex * 0.08,
-                            }}
-                            className="flex min-w-0 items-start gap-1.5 text-[10px] leading-4 text-[#40594d] min-[375px]:gap-2 min-[375px]:text-[11px] sm:text-xs"
-                          >
-
-                            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#168b57] sm:h-[19px] sm:w-[19px]">
-
-                              <CheckCircle2
-                                size={12}
-                                className="text-white"
-                                strokeWidth={2.5}
-                              />
-
-                            </span>
-
-                            <span className="min-w-0 break-words">
-                              {feature}
-                            </span>
-
-                          </motion.li>
-
-                        ))}
-
-                      </ul>
-
-                      {/* CTA Button */}
-                      <motion.button
-                        type="button"
-                        onClick={() => handleViewPack(pack)}
-                        whileHover={{
-                          scale: 1.04,
-                          boxShadow: "0 6px 16px rgba(8,125,61,0.2)",
-                        }}
-                        whileTap={{ scale: 0.96 }}
-                        transition={{ duration: 0.2 }}
-                        className="mt-auto inline-flex min-h-8 max-w-full items-center justify-center gap-1.5 rounded-full bg-[#07864d] px-3 py-2 mt-4 text-[10px] font-bold text-white shadow-sm transition-colors duration-200 hover:bg-[#066c3d] min-[375px]:gap-2 min-[375px]:px-4 min-[375px]:text-[11px] sm:min-h-10 sm:px-5 sm:text-xs"
-                      >
-                        <span className="truncate">
-                          {pack.buttonLabel || "View in App"}
-                        </span>
-
-                        <ArrowRight size={14} className="shrink-0" />
-                      </motion.button>
-
+{/* CTA Button */}
+<motion.button
+  type="button"
+  onClick={() => handleViewPack(pack)}
+  whileHover={{
+    scale: 1.04,
+    boxShadow: "0 6px 16px rgba(8,125,61,0.2)",
+  }}
+  whileTap={{ scale: 0.96 }}
+  transition={{ duration: 0.2 }}
+  className="mt-auto inline-flex min-h-8 max-w-full items-center justify-center gap-1.5 rounded-full bg-[#07864d] px-3 py-2 text-[10px] font-bold text-white shadow-sm transition-colors duration-200 hover:bg-[#066c3d] min-[375px]:gap-2 min-[375px]:px-4 min-[375px]:text-[11px] sm:min-h-10 sm:px-5 sm:text-xs"
+>
+  <span className="truncate">
+    {pack.buttonLabel || "View in App"}
+  </span>
+  <ArrowRight size={14} className="shrink-0" />
+</motion.button>
                     </div>
 
                     {/* RIGHT CURVED FOOD IMAGE */}
