@@ -1609,7 +1609,7 @@ export default function Navbar() {
                 transition-all duration-200
                 hover:bg-white/15
                 hover:text-white
-                xl:px-2.5 xl:text-sm
+                xl:px-2.5 xl:text-[16px]
                 2xl:px-3 2xl:text-base
                 ${focusStyles}
               `}

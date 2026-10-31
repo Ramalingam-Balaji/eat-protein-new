@@ -2979,7 +2979,7 @@ export default function ProteinCalculator() {
               "
             >
               <img
-                src="/assets/protein-mobile-right1.png"
+                src="/assets/app4.png"
                 alt="EatProtein food recommendations mobile screen"
                 loading="lazy"
                 className="
